@@ -1,0 +1,48 @@
+apply plugin: 'java'
+apply plugin: 'maven-publish'
+
+group = 'com.github.jitpack'
+version = '2.0'
+
+sourceCompatibility = 1.8 // java 8
+targetCompatibility = 1.8
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  implementation 'com.google.guava:guava:29.0-jre'
+  
+  implementation 'dev.langchain4j:langchain4j:0.22.0'
+}
+
+java {
+	withSourcesJar()
+	withJavadocJar()
+}
+
+publishing {
+  repositories {
+    maven {
+      name = "GitHubPackages"
+      url = "https://maven.pkg.github.com/Meowo2/Gradle-template"
+      credentials {
+        username = System.getenv("GITHUB_ACTOR")
+        password = System.getenv("GITHUB_TOKEN")
+      }
+    }
+  }
+
+
+    publications {
+        maven(MavenPublication) {
+		from components.java
+        }
+    }
+}
+
+wrapper {
+    gradleVersion = "7.3.3"
+    distributionType = Wrapper.DistributionType.ALL
+}
