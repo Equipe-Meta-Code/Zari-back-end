@@ -1,7 +1,7 @@
- 
+
 package _Engenharia;
 
-import GUI.PerguntaResposta;
+import GUI.Upload_Arquivo;
 
 /**
  *
@@ -13,11 +13,11 @@ public class Principal {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-
-        new PerguntaResposta();
-        
-//"Where does Charlie lives?"
-        
+	
+    	
+    	new Upload_Arquivo();	
+    	
+         
     }
     
 }

@@ -3,9 +3,9 @@ package _Engenharia;
 
 import dev.langchain4j.chain.ConversationalRetrievalChain;
 
-
 import dev.langchain4j.data.document.Document;
-import dev.langchain4j.data.document.splitter.ParagraphSplitter;
+//import dev.langchain4j.data.document.splitter.ParagraphSplitter;    !!!!!!!!!!!!!!!DANDO ERRO, substitui temporariamente!!!!!!!!!!!!!!!!!!!!!
+import dev.langchain4j.data.document.splitter.DocumentSplitters;   //Substituição
 import dev.langchain4j.data.segment.TextSegment;
 import dev.langchain4j.model.embedding.EmbeddingModel;
 import dev.langchain4j.model.huggingface.HuggingFaceChatModel;
@@ -19,12 +19,10 @@ import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import GUI.PerguntaResposta;
-import GUI.Upload_Arquivo;
-
 import static dev.langchain4j.data.document.FileSystemDocumentLoader.loadDocument;
 import static java.time.Duration.ofSeconds;
-import GUI.PerguntaResposta;
+
+import java.io.File;
 
 
 public class Assistente {
@@ -39,7 +37,7 @@ public class Assistente {
 		
 		
 
-        Document document = loadDocument(toPath("text.txt"));
+        Document document = loadDocument(toPath("template.txt"));  //Usa documento criado com todos os dados do documento selecionado (Esse documento e criado dentro do pacote _Engenharia)
         
         //escolhendo um modelo para vetorizar meu texto
         EmbeddingModel embeddingModel = HuggingFaceEmbeddingModel.builder()
@@ -53,7 +51,8 @@ public class Assistente {
 
         //estou aplicando o modelo de vetorização escolhido ao meu texto
         EmbeddingStoreIngestor ingestor = EmbeddingStoreIngestor.builder()
-                .splitter(new ParagraphSplitter())
+                // .splitter(new ParagraphSplitter())  !!!!!!!!!!!!!!!DANDO ERRO, substitui temporariamente!!!!!!!!!!!!!!!!!!!!!
+        		.documentSplitter(DocumentSplitters.recursive(500))  //Substituição
                 .embeddingModel(embeddingModel)
                 .embeddingStore(embeddingStore)
                 .build();
@@ -68,8 +67,14 @@ public class Assistente {
                 // .chatMemory() // you can override default chat memory
                 // .promptTemplate() // you can override default prompt template
                 .build();
+        
+        
         //aqui eu faço a inferência
         String answer = chain.execute(pergunta);
+        
+        File delete_file = new File("src/main/java/_Engenharia/template.txt");     //Apaga o documento depois da resposta
+        delete_file.delete();                                                     //Caso erro na resposta o arquivo NAO e deletado
+        
         return answer; // Charlie is a cheerful carrot living in VeggieVille...
         //exemplo para continuar a pesquisa
         //https://github.com/langchain4j/langchain4j/blob/7307f43d9823af619f1e3196252d212f3df04ddc/langchain4j/src/main/java/dev/langchain4j/model/huggingface/HuggingFaceChatModel.java
