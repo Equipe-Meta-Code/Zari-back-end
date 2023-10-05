@@ -1,4 +1,4 @@
-<h1 align="center"> Projeto API - 2º Semestre (Repositório de códgios) </h1>
+<h1 align="center"> Projeto API - 2º Semestre (Repositório de códigos) </h1>
 
 Link para o repositório global com documentação: https://github.com/Equipe-Meta-Code/Zari-documentation
 
