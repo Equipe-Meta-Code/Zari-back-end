@@ -1,11 +1,11 @@
 
 package _Engenharia;
 
-import GUI.Upload_Arquivo;
+import GUI.TelaInicial;
 
 /**
  *
- * @author diann
+ * @author 
  */
 public class Principal {
 
@@ -15,7 +15,7 @@ public class Principal {
     public static void main(String[] args) {
 	
     	
-    	new Upload_Arquivo();	
+    	new TelaInicial();	
     	
          
     }
