@@ -1,6 +1,6 @@
-<h1 align="center"> Projeto API - 2º Semestre (Repositório - Back-end) </h1>
+<h1 align="center"> Projeto API - 2º Semestre (Repositório de códgios) </h1>
 
-Link para o repositório global: https://github.com/Equipe-Meta-Code/Zari-documentation
+Link para o repositório global com documentação: https://github.com/Equipe-Meta-Code/Zari-documentation
 
 ## 🎯 Objetivo
  Desenvolver um modelo de chatbot (assistente virtual) que analise documentos e responda perguntas sobre eles.
@@ -14,9 +14,9 @@ Link para o repositório global: https://github.com/Equipe-Meta-Code/Zari-docume
 ## 📍 Requisitos não-funcionais
 •	Documentação via GitHub.
 
-•	Banco de dados.
-
 •	Protótipo criado no Figma.
+
+•	Banco de dados.
 
 ## 🔧 Tecnologias utilizadas
 - ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
