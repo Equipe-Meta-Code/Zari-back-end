@@ -10,11 +10,11 @@ Link para o repositório global: https://github.com/Equipe-Meta-Code/Zari-docume
 
 •	O sistema deverá ler os arquivos que forem carregados, analisar as informações e responder perguntas sobre o documento.
 
-•	Banco de dados.
-
 
 ## 📍 Requisitos não-funcionais
 •	Documentação via GitHub.
+
+•	Banco de dados.
 
 •	Protótipo criado no Figma.
 
