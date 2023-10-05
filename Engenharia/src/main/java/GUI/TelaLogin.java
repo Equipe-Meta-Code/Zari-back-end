@@ -7,6 +7,10 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.JCheckBox;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 
 public class TelaLogin extends JFrame {
     JLabel title;
@@ -16,6 +20,8 @@ public class TelaLogin extends JFrame {
     JTextField jPasswordField;
     JButton buttonEntrar;
     JButton buttonCadastrar;
+    JCheckBox buttonShow;
+
 
     public TelaLogin() {
         setTitle("Login");
@@ -51,6 +57,22 @@ public class TelaLogin extends JFrame {
         jPasswordField.setFont(new Font("Arial", Font.ITALIC, 15));
         add(jPasswordField);
 
+        //botao para mostrar senha 
+        buttonShow = new JCheckBox("Mostrar Senha");
+        buttonShow.setBounds(500, 280, 250, 40);
+        buttonShow.setFont(new Font("Arial", Font.ITALIC, 15));
+        
+        add(buttonShow);
+        
+        buttonShow.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		if(buttonShow.isSelected())
+        			jPasswordField.setEchoChar((char)0);
+        		else
+        			jPasswordField.setEchoChar('*');
+        	} 
+        });
+
         buttonEntrar = new JButton("Entrar");
         buttonEntrar.setBounds(280, 310, 85, 30); 
         add(buttonEntrar);
@@ -61,6 +83,12 @@ public class TelaLogin extends JFrame {
 
         setVisible(true);
     }
+
+    @Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
 
     public static void main(String[] args) {
         new TelaLogin();
