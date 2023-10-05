@@ -17,7 +17,7 @@ public class TelaLogin extends JFrame {
     JLabel jLabelUser;
     JLabel jLabelPassword;
     JTextField jTextFieldUser;
-    JTextField jPasswordField;
+    JPasswordField senha;
     JButton buttonEntrar;
     JButton buttonCadastrar;
     JCheckBox buttonShow;
@@ -52,10 +52,10 @@ public class TelaLogin extends JFrame {
         jLabelPassword.setFont(new Font("Arial", Font.PLAIN, 14));
         add(jLabelPassword);
 
-        jPasswordField = new JPasswordField();
-        jPasswordField.setBounds(115, 255, 550, 40); 
-        jPasswordField.setFont(new Font("Arial", Font.ITALIC, 15));
-        add(jPasswordField);
+        senha = new JPasswordField();
+        senha.setBounds(115, 255, 550, 40); 
+        senha.setFont(new Font("Arial", Font.ITALIC, 15));
+        add(senha);
 
         //botao para mostrar senha 
         buttonShow = new JCheckBox("Mostrar Senha");
@@ -67,9 +67,9 @@ public class TelaLogin extends JFrame {
         buttonShow.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         		if(buttonShow.isSelected())
-        			jPasswordField.setEchoChar((char)0);
+        			senha.setEchoChar((char)0);
         		else
-        			jPasswordField.setEchoChar('*');
+        			senha.setEchoChar('*');
         	} 
         });
 
@@ -84,8 +84,7 @@ public class TelaLogin extends JFrame {
         setVisible(true);
     }
 
-    @Override
-	public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
