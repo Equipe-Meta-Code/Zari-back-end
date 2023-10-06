@@ -54,7 +54,7 @@ public class LoginView extends JFrame implements ActionListener{
         
         title = new JLabel("Login");
         title.setFont(new Font("Arial", Font.BOLD, 30));
-        title.setBounds(235, 5, 300, 100);
+        title.setBounds(340, 5, 300, 100);
                 
         add(title);
         
@@ -87,7 +87,7 @@ public class LoginView extends JFrame implements ActionListener{
         
         //botao para mostrar senha 
         buttonShow = new JCheckBox("Mostrar Senha");
-        buttonShow.setBounds(500, 280, 250, 40);
+        buttonShow.setBounds(540, 240, 250, 40);
         buttonShow.setFont(new Font("Arial", Font.ITALIC, 15));
         
         add(buttonShow);
@@ -102,14 +102,14 @@ public class LoginView extends JFrame implements ActionListener{
         });
         
         entrar = new JButton("Entrar");
-        entrar.setBounds(325, 255, 85, 30);
+        entrar.setBounds(340, 255, 85, 30);
         add(entrar);
         
         entrar.addActionListener(this);
      
         
         cadastrar = new JButton("Cadastrar");
-        cadastrar.setBounds(325, 295, 95, 30);
+        cadastrar.setBounds(335, 295, 95, 30);
         add(cadastrar);
         
         cadastrar.addActionListener(this);

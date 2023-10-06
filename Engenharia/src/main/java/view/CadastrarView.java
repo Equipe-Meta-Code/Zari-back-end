@@ -57,7 +57,7 @@ public class CadastrarView extends JFrame implements ActionListener{
         
         title = new JLabel("Cadastrar");
         title.setFont(new Font("Arial", Font.BOLD, 30));
-        title.setBounds(235, 5, 300, 100);
+        title.setBounds(310, 5, 300, 100);
                 
         add(title);
         
@@ -112,7 +112,7 @@ public class CadastrarView extends JFrame implements ActionListener{
         
         //botao para mostrar senha 
         buttonShow = new JCheckBox("Mostrar Senha");
-        buttonShow.setBounds(500, 320, 250, 40);
+        buttonShow.setBounds(540, 320, 250, 40);
         buttonShow.setFont(new Font("Arial", Font.ITALIC, 15));
         
         add(buttonShow);
@@ -128,7 +128,7 @@ public class CadastrarView extends JFrame implements ActionListener{
         
         
         salvar = new JButton("Salvar");
-        salvar.setBounds(325, 335, 85, 30);
+        salvar.setBounds(350, 335, 85, 30);
         add(salvar);
         
         salvar.addActionListener(this);
