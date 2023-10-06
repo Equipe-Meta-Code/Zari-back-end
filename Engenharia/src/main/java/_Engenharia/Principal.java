@@ -1,7 +1,7 @@
 
 package _Engenharia;
 
-import GUI.TelaInicial;
+import view.TelaInicial;
 
 /**
  *
