@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -15,6 +17,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.WindowConstants;
 import javax.swing.JCheckBox;
 
 import controller.LoginController;
@@ -43,8 +46,8 @@ public class LoginView extends JFrame implements ActionListener{
     	
     	controller = new LoginController(this);
         
-		JFrame jFrame = new JFrame();
-		setTitle("Login");
+		JFrame JFrame = new JFrame("Login");
+		
 	
         setSize( 800,450);
         setDefaultCloseOperation(LoginView.DISPOSE_ON_CLOSE);
@@ -140,7 +143,9 @@ public class LoginView extends JFrame implements ActionListener{
 		
 		if (event.getSource() == entrar){
 			try {
-				controller.autenticar();
+				if (controller.autenticar()) {
+					this.dispose();
+				}
 				
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
@@ -150,11 +155,17 @@ public class LoginView extends JFrame implements ActionListener{
 		}
 		
 		if (event.getSource() == cadastrar){
+			this.dispose();
 			new CadastrarView();
 			
 		}
-		
+		 
 		
 	}
+	
+	
+	
+	
+	  
 
 }

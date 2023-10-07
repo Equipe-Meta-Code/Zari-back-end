@@ -176,6 +176,9 @@ public class CadastrarView extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent event) {
 		if (event.getSource() == salvar){
 			controller.salvaUsuario();
+			this.dispose();
+			new TelaInicial();
+			
 		}
 	}
 

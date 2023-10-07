@@ -11,7 +11,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 
-
 public class TelaInicial extends JFrame implements ActionListener {
 	
 	JLabel title;
@@ -21,7 +20,6 @@ public class TelaInicial extends JFrame implements ActionListener {
     JButton buttonCadastrar;
     /* JLabel imagem; */ 
   
-    
     public TelaInicial() {
     	setTitle("Início");
         setBackground(Color.yellow);
@@ -75,15 +73,19 @@ public class TelaInicial extends JFrame implements ActionListener {
         new TelaInicial();
     }
     
+    
     public void actionPerformed(ActionEvent event) {
 		
 		if (event.getSource() == buttonEntrar){
+			this.dispose();
 			new LoginView();
 
 		}
 		
 		if (event.getSource() == buttonCadastrar){
+			this.dispose();
 			new CadastrarView();
+
 			
 		}
 }}
