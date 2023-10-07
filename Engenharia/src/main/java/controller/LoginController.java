@@ -1,10 +1,12 @@
 package controller;
 
+import java.awt.event.WindowEvent;
 import java.sql.Connection;
 import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
 
+import GUI.TelaLogin;
 import dao.Conexao;
 import dao.UsuarioDao;
 import model.Usuario;
@@ -20,8 +22,9 @@ public class LoginController {
 	public LoginController(LoginView view) {
 		this.view = view;
 	}
+	
 
-	public void autenticar() throws SQLException {
+	public boolean autenticar() throws SQLException {
 		
 		//Buscar um usuario da view
 		
@@ -44,12 +47,15 @@ public class LoginController {
 		}else {
 			JOptionPane.showMessageDialog(null, "Usuário ou senha inválidos.");
 		}
-		
-		
-		 
-		
+		return existe;
+			
 		
 	}
+	  
+	
+	
+	
+
 	
 	
 }
