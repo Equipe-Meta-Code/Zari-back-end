@@ -71,17 +71,50 @@ public class UploadArquivo extends JFrame implements ActionListener{
                 File arquivo = new File(explorador_arq.getSelectedFile().getAbsolutePath());  //pega o caminho do arquivo selecionado
                 arquivo_path = arquivo.getAbsolutePath();     //Transforma o caminho em uma String
                 
-                File newfile = new File("src/main/java/_Engenharia/template.txt");     //Cria um arquivo .txt no pacote _Engenharia
+                String texto;
+                texto = arquivo.getAbsolutePath();
+                char[] xChars = arquivo_path.toCharArray();
                 
-                try {
-                	Files.copy(arquivo, newfile);           //Copia todos os datos do arquivo selecionado para o arquivo dentro do pacote _Engenharia
-				} catch (IOException e1) {
+                String limpo;
+        		limpo = "";
+        		
+        	try {
+                BufferedReader reader = new BufferedReader(new FileReader(arquivo));
+                StringBuffer sb = new StringBuffer();
+                String str;             
+                
+                while ((str = reader.readLine()) != null) {
+        			sb.append(str).append("\n");
+        			char[] chars = str.toCharArray();
+        			for(int i = 0; i < chars.length; i++) {
+            			if(chars[i] != ',' & chars[i] != '.' & chars[i] != '`' & chars[i] != ';' & chars[i] != ':'  & chars[i] != '[' 
+            				& chars[i] != ']' & chars[i] != '(' & chars[i] != ')' & chars[i] != '{' & chars[i] != '}' & chars[i] != '/' 
+            				& chars[i] != '!') {
+            				limpo = limpo + chars[i];
+            				
+            			}
+            		
+        			
+        			}	
+        		limpo = limpo + "\n";
+                } 
+                reader.close();
+
+        		} catch (IOException a) {
+        			a.printStackTrace();
+        		}
+        		
+        		try (PrintWriter out = new PrintWriter("src/main/java/_Engenharia/template.txt")) { //Cria um arquivo .txt no pacote _Engenharia
+        		    out.println(limpo);
+        		} catch (FileNotFoundException e2) {
 					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}       
+					e2.printStackTrace();
+				}
+        		
+        
                 
             	new PerguntaResposta();         //Cria a tela de pergunta
-                
+              
                 this.dispose();
                 
             }
