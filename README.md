@@ -27,4 +27,6 @@ Link para o repositório global com documentação: https://github.com/Equipe-Me
 
 - ![MYSQL](https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white)
 
+- ![GITHUB](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)
+
 
