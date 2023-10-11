@@ -36,7 +36,7 @@ public class CadastrarView extends JFrame implements ActionListener{
     JTextField textEmail;
     
     JCheckBox buttonShow;
-    
+    JButton voltar;
     JButton salvar;
 	private final FormCadastroController controller;
     
@@ -126,9 +126,14 @@ public class CadastrarView extends JFrame implements ActionListener{
         	} 
         });
         
+        voltar = new JButton("Voltar");
+        voltar.setBounds(300, 335, 85, 30);
+        add(voltar);
         
+        voltar.addActionListener(this);
+	    
         salvar = new JButton("Salvar");
-        salvar.setBounds(350, 335, 85, 30);
+        salvar.setBounds(415, 335, 85, 30);
         add(salvar);
         
         salvar.addActionListener(this);
@@ -177,9 +182,17 @@ public class CadastrarView extends JFrame implements ActionListener{
 		if (event.getSource() == salvar){
 			controller.salvaUsuario();
 			this.dispose();
+			new CadastrarView();
+			
+		}
+
+		if (event.getSource() == voltar){
+			controller.salvaUsuario();
+			this.dispose();
 			new TelaInicial();
 			
 		}
+		
 	}
 
 	}
