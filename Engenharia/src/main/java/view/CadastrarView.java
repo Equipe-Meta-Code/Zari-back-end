@@ -187,7 +187,6 @@ public class CadastrarView extends JFrame implements ActionListener{
 		}
 
 		if (event.getSource() == voltar){
-			controller.salvaUsuario();
 			this.dispose();
 			new TelaInicial();
 			
