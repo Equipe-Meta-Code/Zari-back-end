@@ -26,8 +26,8 @@ import model.Usuario;
 public class CadastrarView extends JFrame implements ActionListener{
     
     JLabel title;
-    JLabel jLabelname;
-    JLabel jLabelsenha;
+    JLabel jLabelName;
+    JLabel jLabelSenha;
     JLabel jLabelId;
     JLabel jLabelEmail;
     JTextField textId;
@@ -71,12 +71,12 @@ public class CadastrarView extends JFrame implements ActionListener{
         textId.setFont(new Font("Arial", Font.ITALIC, 15));
                 
      
-        jLabelname = new JLabel("Nome completo:");
-        jLabelname.setBounds(115, 75, 200, 50);
-        jLabelname.setFont(new Font("Arial", Font.PLAIN, 14));
+        jLabelName = new JLabel("Nome completo:");
+        jLabelName.setBounds(115, 75, 200, 50);
+        jLabelName.setFont(new Font("Arial", Font.PLAIN, 14));
         
      
-        add(jLabelname);
+        add(jLabelName);
         
         textNome = new JTextField();
         textNome.setBounds(115, 115, 550, 40);
@@ -97,12 +97,12 @@ public class CadastrarView extends JFrame implements ActionListener{
         add(textEmail);
       
         
-        jLabelsenha = new JLabel("Senha:");
-        jLabelsenha.setBounds(115, 235, 250, 50);
-        jLabelsenha.setFont(new Font("Arial", Font.PLAIN, 14));
+        jLabelSenha = new JLabel("Senha:");
+        jLabelSenha.setBounds(115, 235, 250, 50);
+        jLabelSenha.setFont(new Font("Arial", Font.PLAIN, 14));
   
                  
-        add(jLabelsenha);
+        add(jLabelSenha);
         
         textSenha = new JPasswordField();
         textSenha.setBounds(115, 275, 550, 40);
