@@ -28,7 +28,7 @@ import java.io.File;
 public class Assistente {
 	
 	 // You can get your own HuggingFace API key here: https://huggingface.co/settings/tokens
-    public static final String HF_API_KEY = "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";
+    public static final String hfApiKey = "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";
 	
     
     private static String pergunta;
@@ -41,7 +41,7 @@ public class Assistente {
         
         //escolhendo um modelo para vetorizar meu texto
         EmbeddingModel embeddingModel = HuggingFaceEmbeddingModel.builder()
-                .accessToken(HF_API_KEY)
+                .accessToken(hfApiKey)
                 .modelId("sentence-transformers/all-MiniLM-L6-v2")
                 .waitForModel(true)
                 .timeout(ofSeconds(60))
@@ -62,7 +62,7 @@ public class Assistente {
  
         //aqui eu escolho o modelo da inferência (a pergunta)
         ConversationalRetrievalChain chain = ConversationalRetrievalChain.builder()
-                .chatLanguageModel(HuggingFaceChatModel.withAccessToken(HF_API_KEY))
+                .chatLanguageModel(HuggingFaceChatModel.withAccessToken(hfApiKey))
                 .retriever(EmbeddingStoreRetriever.from(embeddingStore, embeddingModel))
                 // .chatMemory() // you can override default chat memory
                 // .promptTemplate() // you can override default prompt template
