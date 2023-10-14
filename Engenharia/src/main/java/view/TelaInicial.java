@@ -18,9 +18,9 @@ public class TelaInicial extends JFrame implements ActionListener {
 	JLabel textoCadastrar;
 	JButton buttonEntrar;
     JButton buttonCadastrar;
-    /* JLabel imagem; */ 
-  
+      
     public TelaInicial() {
+    	
     	setTitle("Início");
         setBackground(Color.yellow);
         setSize(800, 450);
@@ -28,14 +28,12 @@ public class TelaInicial extends JFrame implements ActionListener {
         setResizable(true);
         setLocationRelativeTo(null);
         setLayout(null);
-    	
-        /* ImageIcon image = new ImageIcon(getClass().getResource("zari.png"));
+
         
-        imagem = new JLabel(image);
-        add(imagem); 
-        
-     	Código teste da Imagem
-        */ 
+        ImageIcon imageIcon = new ImageIcon(getClass().getResource("zaribot.png"));
+        JLabel imageLabel = new JLabel(imageIcon);
+        imageLabel.setBounds(270, 10, 260, 180); // Ajuste a posição e o tamanho conforme necessário
+        add(imageLabel);
         
         title = new JLabel("Assistente Virtual Zari");
         title.setFont(new Font("Arial", Font.BOLD, 30));
