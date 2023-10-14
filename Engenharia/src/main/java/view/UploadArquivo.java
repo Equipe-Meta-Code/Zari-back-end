@@ -20,7 +20,7 @@ import com.google.common.io.Files;
 public class UploadArquivo extends JFrame implements ActionListener{
 	
 	JButton selector;
-	String arquivo_path;
+	String arquivoPath;
     
     public UploadArquivo(){
         
@@ -73,11 +73,11 @@ public class UploadArquivo extends JFrame implements ActionListener{
             if(resposta == JFileChooser.APPROVE_OPTION){
              
                 File arquivo = new File(explorador_arq.getSelectedFile().getAbsolutePath());  //pega o caminho do arquivo selecionado
-                arquivo_path = arquivo.getAbsolutePath();     //Transforma o caminho em uma String
+                arquivoPath = arquivo.getAbsolutePath();     //Transforma o caminho em uma String
                 
                 String texto;
                 texto = arquivo.getAbsolutePath();
-                char[] xChars = arquivo_path.toCharArray();
+                char[] xChars = arquivoPath.toCharArray();
                 
                 String limpo;
         		limpo = "";
@@ -127,8 +127,8 @@ public class UploadArquivo extends JFrame implements ActionListener{
         
     }
     
-    public String getArquivo_path() {
-    	return arquivo_path;
+    public String getArquivoPath() {
+    	return arquivoPath;
     }
     
 }
