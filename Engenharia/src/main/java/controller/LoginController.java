@@ -45,12 +45,13 @@ public class LoginController {
 		
 		if(existe) {
 			
-			File template = new File("..\\_Engenharia\\template.txt");
+			File template = new File(System.getProperty("user.dir")+"/src/main/java/_Engenharia/template.txt");
 	    	try {
 				template.createNewFile();
 			} catch (IOException e) {
 				e.printStackTrace();
 				JOptionPane.showMessageDialog(null, "Não Foi Possível Criar o Arquivo base", "Error", 2);
+				System.exit(-1);
 			}
 			
 			new UploadArquivo();
