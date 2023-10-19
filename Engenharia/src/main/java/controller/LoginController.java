@@ -1,12 +1,13 @@
 package controller;
 
 import java.awt.event.WindowEvent;
+import java.io.File;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
 
-import GUI.TelaLogin;
 import dao.Conexao;
 import dao.UsuarioDao;
 import model.Usuario;
@@ -43,6 +44,15 @@ public class LoginController {
 		//Se existir direciona para o assistente
 		
 		if(existe) {
+			
+			File template = new File("..\\_Engenharia\\template.txt");
+	    	try {
+				template.createNewFile();
+			} catch (IOException e) {
+				e.printStackTrace();
+				JOptionPane.showMessageDialog(null, "Não Foi Possível Criar o Arquivo base", "Error", 2);
+			}
+			
 			new UploadArquivo();
 		}else {
 			JOptionPane.showMessageDialog(null, "Usuário ou senha inválidos.");
