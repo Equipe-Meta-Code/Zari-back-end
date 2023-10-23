@@ -9,8 +9,8 @@ public class Conexao {
 	//conecta com o banco
 	
 	public Connection getConnection() throws SQLException {
-		Connection conexao = DriverManager.getConnection("jdbc:mysql://localhost/banco_zari","root","fatec");
-		return conexao;
+		String url="jdbc:mysql://banco-metacode.mysql.database.azure.com:3306/banco_zari?useSSL=true";
+		Connection myDbConn = DriverManager.getConnection(url, "admMC", "MetaCode411#");
+		return myDbConn;
 	}
-
 }
