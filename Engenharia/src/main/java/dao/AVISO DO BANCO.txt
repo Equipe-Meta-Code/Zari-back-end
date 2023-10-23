@@ -1,18 +1,6 @@
 COLE O CÓDIGO ABAIXO NO WORKBENCH (O NOME DO BANCO PRECISA SER banco_zari):
 
-create database banco_zari;
-
 use banco_zari;
 
-create table usuario(
-id int auto_increment primary key not null,
-email varchar(100) not null,
-nome varchar (60) not null,
-senha varchar (60) not null);
-
-
 select * from usuario;
-
-
-OBS: DENTRO DO PACOTE DAO, ACESSE A CLASSE Conexao E MUDE O USUÁRIO E SENHA PARA
-A MESMA DO SEU BANCO LOCAL.
+select * from historico;
