@@ -8,6 +8,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
+
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
@@ -34,11 +39,13 @@ public class CadastrarView extends JFrame implements ActionListener{
     JTextField textNome;
     JPasswordField textSenha;
     JTextField textEmail;
-    
     JCheckBox buttonShow;
     JButton voltar;
     JButton salvar;
-	private final FormCadastroController controller;
+
+    JLabel jLabelvalidationLabel;
+
+    private final FormCadastroController controller;
     
   
     
@@ -86,22 +93,39 @@ public class CadastrarView extends JFrame implements ActionListener{
         
         jLabelEmail = new JLabel("Email:");
         jLabelEmail.setBounds(115, 155, 200, 50);
-        jLabelEmail.setFont(new Font("Arial", Font.PLAIN, 14));  
-     
+        jLabelEmail.setFont(new Font("Arial", Font.PLAIN, 14));
+
         add(jLabelEmail);
-        
+
         textEmail = new JTextField();
         textEmail.setBounds(115, 195, 550, 40);
         textEmail.setFont(new Font("Arial", Font.ITALIC, 15));
-        
+
         add(textEmail);
-      
-        
+
+
+        //validar o formato de email
+        jLabelValidationLabel = new JLabel();
+        jLabelValidationLabel.setBounds(115, 235, 550, 40);
+        jLabelValidationLabel.setFont(new Font("Arial", Font.ITALIC, 15));
+
+        add(jLabelvalidationLabel)
+        textEmail.addKeyListener(new KeyListener(){
+            public void keyReleased(KeyEvent e) {
+                String email = textEmail.getText();
+                if (isValidEmail(email)) {
+                    validationLabel.setText("E-mail válido");
+                } else {
+                    validationLabel.setText("E-mail inválido");
+                }
+            }
+        });
+
         jLabelSenha = new JLabel("Senha:");
         jLabelSenha.setBounds(115, 235, 250, 50);
         jLabelSenha.setFont(new Font("Arial", Font.PLAIN, 14));
-  
-                 
+
+
         add(jLabelSenha);
         
         textSenha = new JPasswordField();
@@ -137,9 +161,7 @@ public class CadastrarView extends JFrame implements ActionListener{
         add(salvar);
         
         salvar.addActionListener(this);
-        
-        
-        
+
         setVisible(true);
 		
 }
@@ -166,7 +188,7 @@ public class CadastrarView extends JFrame implements ActionListener{
 		return textNome;
 	}
 
-	public void setTextUsuario(JTextField textUsuario) {
+	public void setTextNome(JTextField textNome) {
 		this.textNome = textNome;
 	}
 
@@ -178,23 +200,39 @@ public class CadastrarView extends JFrame implements ActionListener{
 		this.textSenha = textSenha;
 	}
 
+    public JLabel getValidationLabel() {
+        return validationLabel;
+    }
+
+    public void setValidationLabel(JLabel validationLabel) {
+        this.validationLabel = validationLabel;
+    }
+
 	public void actionPerformed(ActionEvent event) {
 		if (event.getSource() == salvar){
 			controller.salvaUsuario();
 			this.dispose();
 			new CadastrarView();
-			
+
 		}
 
 		if (event.getSource() == voltar){
 			this.dispose();
 			new TelaInicial();
-			
+
 		}
-		
-	}
 
 	}
+    private boolean isValidEmail(String email) {
+        String emailRegex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$"; //expressão regular (regex) para validar o formato de um endereço de e-mail
+        Pattern pattern = Pattern.compile(emailRegex); // usada para compilar a expressão regular
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
+
+        //verifica se o endereço de e-mail fornecido (email) corresponde a essa expressão regular usando o método matcher.matches()
+
+}
+
 
 	
 
