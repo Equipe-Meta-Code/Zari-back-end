@@ -220,7 +220,11 @@ public class CadastrarView extends JFrame implements ActionListener{
 
 	public void actionPerformed(ActionEvent event) {
 		if (event.getSource() == salvar){
+            if (isValidEmail(textEmail(getText))){ //valida o email para cadastro do usuario
 			controller.salvaUsuario();
+            } else {
+                JOptionPane.showMessageDialog(this, "Email inválido.");
+            }
 			this.dispose();
 			new CadastrarView();
 			
