@@ -1,8 +1,6 @@
 package controller;
 
-import java.awt.event.WindowEvent;
-import java.io.File;
-import java.io.IOException;
+
 import java.sql.Connection;
 import java.sql.SQLException;
 
@@ -15,11 +13,20 @@ import view.LoginView;
 import view.UploadArquivo;
 
 
-
 public class LoginController {
 
+	private UploadArquivo uploadArquivo;
+	
 	private LoginView view;
 
+	private HistoricoController historicoController = new HistoricoController();
+    
+        private TabelaHistorico tabelaHistorico;
+    
+    	public void setTabelaHistorico(TabelaHistorico tabelaHistorico) {
+    	        this.tabelaHistorico = tabelaHistorico;
+   	}
+	
 	public LoginController(LoginView view) {
 		this.view = view;
 	}
@@ -46,21 +53,18 @@ public class LoginController {
 		if(existe) {
 			
 			File template = new File(System.getProperty("user.dir")+"/src/main/java/_Engenharia/template.txt");
-	    	try {
-				template.createNewFile();
-			} catch (IOException e) {
-				e.printStackTrace();
-				JOptionPane.showMessageDialog(null, "Não Foi Possível Criar o Arquivo base", "Error", 2);
-				System.exit(-1);
-			}
+	    	
 			
-			new UploadArquivo();
+			uploadArquivo = new UploadArquivo();
+          		uploadArquivo.setHistoricoController(historicoController);
+          		historicoController.setEmail(email);
+         		historicoController.setTabelaHistorico(tabelaHistorico);
+            
+           		historicoController.tabelaHistorico.setUploadArquivo(uploadArquivo);
 		}else {
 			JOptionPane.showMessageDialog(null, "Usuário ou senha inválidos.");
 		}
-		return existe;
-			
-		
+		return existe;	
 	}
 	  
 	
