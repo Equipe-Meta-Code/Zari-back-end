@@ -21,6 +21,7 @@ import java.sql.Connection;
  
  
 public class ChatApp extends JFrame {
+	private int conversationId = 0;
     private Assistente assistente;
     private JTextPane chatArea;
     private JTextField inputField;
@@ -50,7 +51,7 @@ public class ChatApp extends JFrame {
         panel.add(scrollPane, BorderLayout.CENTER);
  
         inputField = new JTextField();
-        inputField.setPreferredSize(new Dimension(200, 30)); // Ajuste o tamanho vertical conforme necessário
+        inputField.setPreferredSize(new Dimension(200, 30)); 
         inputField.setBorder(BorderFactory.createLineBorder(Color.GRAY, 2, true)); // Borda arredondada
         inputField.addActionListener(new ActionListener() {
             @Override
@@ -109,19 +110,26 @@ public class ChatApp extends JFrame {
         conversation.add(text);
     }
     
-   /* public void saveMessage(String message) throws SQLException {
-    	Conexao dbConnection = new Conexao();
+    public void saveMessage() {
+    	databaseConnection dbConnection = new databaseConnection();
         Connection connection = dbConnection.getConnection();
  
         try {
-            String sql = "INSERT INTO conversa (mensagem) VALUES (?)";
+            // Use um StringBuilder para concatenar todas as mensagens
+            StringBuilder conversationBuilder = new StringBuilder();
+            for (String message : conversation) {
+                conversationBuilder.append(message).append(" ");
+            }
+
+            String sql = "INSERT INTO conversa (id, mensagem) VALUES (?, ?)";
             PreparedStatement statement = connection.prepareStatement(sql);
-            statement.setString(1, message);
+            statement.setInt(1, conversationId);
+            statement.setString(2, conversationBuilder.toString().trim());
             statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace();
         }
-    } */
+    }
  
  
     public static void main(String[] args) {
@@ -131,13 +139,9 @@ public class ChatApp extends JFrame {
                 ChatApp chatApp = new ChatApp();
                 chatApp.addWindowListener(new WindowAdapter() {
                     public void windowClosing(WindowEvent e) {
-                    	for (String message : chatApp.conversation) {
-                            //chatApp.saveMessage(message); // Chame o método da instância
-                            System.out.println(message);
-                        }
-                        // Salvar a conversa em um banco de dados ou realizar outra ação desejada
-                        // Aqui você pode acessar chatApp.conversation para obter todas as mensagens.
-                    }
+                    	chatApp.saveMessage();
+                    	chatApp.conversationId++;
+                   }
                 });
             }
         });
