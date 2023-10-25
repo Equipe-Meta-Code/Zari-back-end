@@ -5,8 +5,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
+import controller.LoginController;
+import model.Historico;
 import model.Usuario;
+import view.TelaInicial;
+import view.UploadArquivo;
 
 public class UsuarioDao {
 
@@ -25,9 +28,7 @@ public class UsuarioDao {
 		statement.setString(1, usuario.getEmail());
 		statement.setString(2, usuario.getNome());
 		statement.setString(3, usuario.getSenha());
-		statement.execute();
-					
-		
+		statement.execute();		
 	}
 	
 	public boolean existeNoBancoPorUsuarioESenha(Usuario usuario) throws SQLException {
@@ -43,10 +44,18 @@ public class UsuarioDao {
 		
 		ResultSet resultSet = statement.getResultSet();
 			
-		return resultSet.next();
-		
-		
+		return resultSet.next();	
 	}
+	
+	public void insertHistorico(Historico historico) throws SQLException {
+
+            String sql = "insert into historico(emailHistorico, documento) values(?,?);";
+
+            PreparedStatement statement = connection.prepareStatement(sql);
+            statement.setString(1, historico.getEmailHistorico());
+            statement.setString(2, historico.getDocumento());
+            statement.execute();
+        }
 
 	
 }
