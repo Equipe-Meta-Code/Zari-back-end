@@ -217,10 +217,19 @@ public class CadastrarView extends JFrame implements ActionListener{
     public void setValidationLabel(JLabel validationLabel) {
         this.jLabelvalidationLabel = validationLabel;
     }
+    
+    private boolean isValidEmail(String email) {
+        String emailRegex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+.com+$"; //expressão regular (regex) para validar o formato de um endereço de e-mail
+        Pattern pattern = Pattern.compile(emailRegex); // usada para compilar a expressão regular
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
+        //verifica se o endereço de e-mail fornecido (email) corresponde a essa expressão regular usando o método matcher.matches()
+
+    }
 
 	public void actionPerformed(ActionEvent event) {
 		if (event.getSource() == salvar){
-            if (isValidEmail(textEmail(getText))){ //valida o email para cadastro do usuario
+            if (isValidEmail(jLabelEmail.getText())){ //valida o email para cadastro do usuario
 			controller.salvaUsuario();
             } else {
                 JOptionPane.showMessageDialog(this, "Email inválido.");
@@ -237,15 +246,6 @@ public class CadastrarView extends JFrame implements ActionListener{
 		}
 		
 	}
-
-     private boolean isValidEmail(String email) {
-        String emailRegex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$"; //expressão regular (regex) para validar o formato de um endereço de e-mail
-        Pattern pattern = Pattern.compile(emailRegex); // usada para compilar a expressão regular
-        Matcher matcher = pattern.matcher(email);
-        return matcher.matches();
-        //verifica se o endereço de e-mail fornecido (email) corresponde a essa expressão regular usando o método matcher.matches()
-
-    }
 
 }
 
