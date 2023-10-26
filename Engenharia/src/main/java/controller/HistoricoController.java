@@ -22,6 +22,7 @@ public class HistoricoController {
 	}
 	String emailHistorico;
 	String documento;
+	String dataEHora.
 	
 	public void setEmail(String e) {
 		emailHistorico = e;
@@ -30,10 +31,14 @@ public class HistoricoController {
 	public void setDocumento(String d) {
 		documento = d;
 	}
+
+	public void setDataEHora(String dh) {
+		dataEHora = dh;
+	}
 	
 	public void salvarHistorico() {
 		
-		Historico novoHistorico = new Historico(emailHistorico, documento);
+		Historico novoHistorico = new Historico(emailHistorico, documento, dataEHora);
 		
 		try {
 			Connection conexao = new databaseConnection().getConnection();
@@ -58,9 +63,10 @@ public class HistoricoController {
 		while (rs.next()) {
 		 String email = rs.getString("emailHistorico");
 		 String documento = rs.getString("documento");
+		 String dataEHora = rs.getNString("dataEHora");	
 
 			if (email.equals(emailHistorico)) {
-				tabelaHistorico.dados.add(new Historico(email,documento));
+				tabelaHistorico.dados.add(new Historico(email,documento, dataEHora));
 			}
 		   
 		}
