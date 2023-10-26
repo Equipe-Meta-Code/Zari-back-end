@@ -78,8 +78,12 @@ public class PerguntaResposta extends JFrame implements ActionListener{
         caixa2.setFont(new Font("Arial", Font.ITALIC, 15));
                 
         add(caixa2);
-        
-        
+
+	//botao historico
+	buttonHistorico = new JButton("Histórico");
+        buttonHistorico.setBounds(325, 350, 100, 30); // Ajuste de posicionamento e tamanho
+        add(buttonHistorico);
+        buttonHistorico.addActionListener(this); 
         
         setVisible(true);
     }
