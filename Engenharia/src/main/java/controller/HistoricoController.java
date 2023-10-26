@@ -22,7 +22,7 @@ public class HistoricoController {
 	}
 	String emailHistorico;
 	String documento;
-	String dataEHora.
+	String dataEHora;
 	
 	public void setEmail(String e) {
 		emailHistorico = e;
