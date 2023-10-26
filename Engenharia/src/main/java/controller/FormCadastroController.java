@@ -1,12 +1,13 @@
 package controller;
 
 import java.sql.Connection;
+
 import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
 
-import dao.Conexao;
 import dao.UsuarioDao;
+import dao.databaseConnection;
 import model.Usuario;
 import view.CadastrarView;
 
@@ -30,7 +31,7 @@ public class FormCadastroController {
 			Usuario usuarioNovo = new Usuario(email, nome, senha);
 			
 			try {
-				Connection conexao = new Conexao().getConnection();
+				Connection conexao = new databaseConnection().getConnection();
 				UsuarioDao usuarioDao = new UsuarioDao(conexao);
 				usuarioDao.insert(usuarioNovo);
 				

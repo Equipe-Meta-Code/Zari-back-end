@@ -1,13 +1,14 @@
 package controller;
 
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import dao.Conexao;
 import dao.UsuarioDao;
+import dao.databaseConnection;
 import model.Historico;
 import view.CadastrarView;
 import view.TabelaHistorico;
@@ -35,7 +36,7 @@ public class HistoricoController {
 		Historico novoHistorico = new Historico(emailHistorico, documento);
 		
 		try {
-			Connection conexao = new Conexao().getConnection();
+			Connection conexao = new databaseConnection().getConnection();
 			UsuarioDao usuarioDao = new UsuarioDao(conexao);
 			usuarioDao.insertHistorico(novoHistorico);		
 			
@@ -48,7 +49,7 @@ public class HistoricoController {
 	public void salvarNaTabela() {
 		
 		try {
-		Connection conexao = new Conexao().getConnection();
+		Connection conexao = new databaseConnection().getConnection();
 		PreparedStatement stmt = conexao.prepareStatement("select * from historico");
 		
 		ResultSet rs = stmt.executeQuery();

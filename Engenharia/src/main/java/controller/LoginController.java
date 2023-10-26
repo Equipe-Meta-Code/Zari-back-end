@@ -2,12 +2,13 @@ package controller;
 
 
 import java.sql.Connection;
+
 import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
 
-import dao.Conexao;
 import dao.UsuarioDao;
+import dao.databaseConnection;
 import model.Usuario;
 import view.LoginView;
 import view.UploadArquivo;
@@ -45,8 +46,12 @@ public class LoginController {
 		
 		//Verificar se existe no banco de dados
 		
-		Connection conexao = new Conexao().getConnection();
-		UsuarioDao usuarioDao = new UsuarioDao(conexao);
+        databaseConnection dbConnection = new databaseConnection();
+        Connection conexao = dbConnection.getConnection();
+
+        // Create an instance of UsuarioDao using the connection
+        UsuarioDao usuarioDao = new UsuarioDao(conexao);
+
 		
 		boolean existe = usuarioDao.existeNoBancoPorUsuarioESenha(usuarioAutenticar);
 		
