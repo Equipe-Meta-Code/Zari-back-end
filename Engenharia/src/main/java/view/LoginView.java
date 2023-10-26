@@ -21,7 +21,6 @@ import javax.swing.WindowConstants;
 import javax.swing.JCheckBox;
 
 import controller.LoginController;
-import dao.Conexao;
 import dao.UsuarioDao;
 import model.Usuario;
 
