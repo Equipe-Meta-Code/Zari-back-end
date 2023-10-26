@@ -110,6 +110,10 @@ public class PerguntaResposta extends JFrame implements ActionListener{
 		}
 		
 	}
+	public void limparCaixa(){
+		caixa1.setText("");
+		caixa2.setText("");
+		}
 	
 }
    
