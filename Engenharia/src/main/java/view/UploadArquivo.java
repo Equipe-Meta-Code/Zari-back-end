@@ -1,4 +1,3 @@
-
 package view;
 
 import java.awt.Color;
@@ -15,31 +14,50 @@ import java.io.PrintWriter;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-import com.google.common.io.Files;
+import controller.HistoricoController;
 
 public class UploadArquivo extends JFrame implements ActionListener{
 	
-	JButton selector;
-	String arquivoPath;
-    
+    JButton upload;
+    JButton historico;
+    String arquivoPath;
+    public String arquivoAcessado;
+
+    private PerguntaResposta perguntaResposta =new PerguntaResposta();
+
+    private HistoricoController historicoController;
+
+     public void setHistoricoController(HistoricoController historicoController) {
+    	this.historicoController = historicoController;
+    }
+	
     public UploadArquivo(){
-        
+	    
+       perguntaResposta.setVisible(false);
+	    
        //Titulo
+	    
        JLabel title = new JLabel("Upload de Arquivos");
        title.setHorizontalAlignment(JLabel.CENTER);
        title.setVerticalAlignment(JLabel.TOP);
        title.setFont(new Font("Arial", Font.BOLD, 30));
-       
-       
+              
        //Botão para abrir selecionador de arquivos
-       selector = new JButton();
-       selector.setBounds((450/2)-90, 100, 180, 32);
-       selector.setHorizontalTextPosition(JButton.CENTER);
-       selector.setFocusable(false);
-       selector.setText("Selecione um Arquivo...");
-       selector.addActionListener(this);     //Propriedade que detecta se o botão esta sento clicado
+       upload = new JButton();
+       upload.setBounds((450/2)-90, 100, 180, 32);
+       upload.setHorizontalTextPosition(JButton.CENTER);
+       upload.setFocusable(false);
+       upload.setText("Selecione um Arquivo...");
+       upload.addActionListener(this);     //Propriedade que detecta se o botão esta sento clicado
         
-       
+       historico = new JButton();
+
+       historico.setBounds((450/2)-90, 150, 180, 32);
+       historico.setHorizontalTextPosition(JButton.CENTER);
+       historico.setFocusable(false);
+       historico.setText("Historico");
+       historico.addActionListener(this); 
+	    
        this.setSize(450,450);
        this.setBackground(Color.yellow);
        this.setResizable(false);
@@ -48,21 +66,24 @@ public class UploadArquivo extends JFrame implements ActionListener{
        this.setLayout(null);
        
        //adiciona o botão e o titulo para o frame(tela)
-       this.add(selector);
+       this.add(upload);
+       this.add(historico);
        this.add(title);
        
        this.setVisible(true);
-       
         
     }
-    
-    
     
     @Override
     //Metodo que sera chamado caso o botão seja apertado
     public void actionPerformed(ActionEvent e){
-        
-        if(e.getSource()==selector){   //verifica se o botão foi apertado
+	    
+        if (e.getSource() == historico){
+    		historicoController.salvarNaTabela();
+			this.dispose();
+		}
+	    
+        if(e.getSource()==upload){   //verifica se o botão foi apertado
             
         	FileNameExtensionFilter filtro = new FileNameExtensionFilter("Text Files", "txt");   //Cria filtro para permitir selecionar apenas certos tipos de arquivos
         	
@@ -71,9 +92,15 @@ public class UploadArquivo extends JFrame implements ActionListener{
             int resposta = explorador_arq.showOpenDialog(null);   //verifica se foi selecionado um arquivo (leva o valor para a variavel resposta)
             
             if(resposta == JFileChooser.APPROVE_OPTION){
-             
+		    
                 File arquivo = new File(explorador_arq.getSelectedFile().getAbsolutePath());  //pega o caminho do arquivo selecionado
                 arquivoPath = arquivo.getAbsolutePath();     //Transforma o caminho em uma String
+
+		 arquivoAcessado = (arquivo.getName());
+                
+                historicoController.setDocumento(arquivoAcessado);
+                
+                historicoController.salvarHistorico();
                 
                 String texto;
                 texto = arquivo.getAbsolutePath();
@@ -114,15 +141,14 @@ public class UploadArquivo extends JFrame implements ActionListener{
 					// TODO Auto-generated catch block
 					e2.printStackTrace();
 				}
-        		
-        
-                
-            	new PerguntaResposta();         //Cria a tela de pergunta
-              
-                this.dispose();
-                
+		perguntaResposta.setVisible(true);       //Cria a tela de pergunta
+            	
+                this.setVisible(false);
+		    
             }
-            
+		
+            perguntaResposta.setHistoricoControllerPergunta(historicoController);         //Cria a tela de pergunta
+                
         }
         
     }
