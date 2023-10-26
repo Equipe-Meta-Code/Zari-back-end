@@ -48,11 +48,12 @@ public class UsuarioDao {
 	
 	public void insertHistorico(Historico historico) throws SQLException {
 
-            String sql = "insert into historico(emailHistorico, documento) values(?,?);";
+            String sql = "insert into historico(emailHistorico, documento, dataEHora) values(?,?,?);";
 
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, historico.getEmailHistorico());
             statement.setString(2, historico.getDocumento());
+	    statement.setString(3, historico.getDataEHora());
             statement.execute();
         }
 
