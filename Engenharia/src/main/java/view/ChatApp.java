@@ -4,7 +4,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
  
 import _Engenharia.Assistente;
- 
+import controller.HistoricoController;
 import dao.*;
  
 import javax.swing.text.*;
@@ -20,12 +20,20 @@ import java.util.List;
 import java.sql.Connection;
  
  
-public class ChatApp extends JFrame {
+public class ChatApp extends JFrame implements ActionListener{
 	private int conversationId = 0;
     private Assistente assistente;
     private JTextPane chatArea;
     private JTextField inputField;
+    JButton buttonHistorico;
+    
     private List<String> conversation;
+    
+	private HistoricoController historicoController;
+	
+	public void setHistoricoControllerChat(HistoricoController historicoController) {
+		this.historicoController = historicoController;
+	}
  
     public ChatApp() {
         assistente = new Assistente();
@@ -36,22 +44,27 @@ public class ChatApp extends JFrame {
         setLocationRelativeTo(null);
         setResizable(false);
  
-        JPanel panel = new JPanel();
-        panel.setLayout(new BorderLayout());
-        add(panel);
+        JPanel mainPanel = new JPanel(new BorderLayout());
+        add(mainPanel);
+
+        JPanel chatPanel = new JPanel(new BorderLayout());
+        mainPanel.add(chatPanel);
  
         JLabel titleLabel = new JLabel("CHAT");
         titleLabel.setFont(new Font("Arial", Font.BOLD, 24));
         titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        panel.add(titleLabel, BorderLayout.NORTH);
+        chatPanel.add(titleLabel, BorderLayout.NORTH);
  
         chatArea = new JTextPane();
         chatArea.setEditable(false);
         JScrollPane scrollPane = new JScrollPane(chatArea);
-        panel.add(scrollPane, BorderLayout.CENTER);
+        chatPanel.add(scrollPane, BorderLayout.CENTER);
+        
+        JPanel inputPanel = new JPanel(new BorderLayout());
+        mainPanel.add(inputPanel, BorderLayout.SOUTH);
  
         inputField = new JTextField();
-        inputField.setPreferredSize(new Dimension(200, 30)); 
+        inputField.setPreferredSize(new Dimension(150, 30)); 
         inputField.setBorder(BorderFactory.createLineBorder(Color.GRAY, 2, true)); // Borda arredondada
         inputField.addActionListener(new ActionListener() {
             @Override
@@ -60,7 +73,13 @@ public class ChatApp extends JFrame {
             }
         });
         inputField.setBorder(new EmptyBorder(10, 10, 10, 10));
-        panel.add(inputField, BorderLayout.SOUTH);
+        inputPanel.add(inputField, BorderLayout.CENTER);
+        
+        
+        buttonHistorico = new JButton("Histórico");
+        buttonHistorico.setPreferredSize(new Dimension(100, 10)); // Ajuste de posicionamento e tamanho
+        inputPanel.add(buttonHistorico, BorderLayout.EAST);
+        buttonHistorico.addActionListener(this); 
  
         setVisible(true);
     }
@@ -130,7 +149,16 @@ public class ChatApp extends JFrame {
             e.printStackTrace();
         }
     }
- 
+    
+    public void actionPerformed(ActionEvent event) {		
+		if (event.getSource() == buttonHistorico){
+			this.dispose();
+			
+			historicoController.salvarNaTabela();
+			
+		}
+		
+	}
  
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
@@ -146,4 +174,6 @@ public class ChatApp extends JFrame {
             }
         });
     }
+
+	
 }
