@@ -11,7 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import _Engenharia.Assistente;
-
+import controller.HistoricoController;
 
 public class PerguntaResposta extends JFrame implements ActionListener{
     
@@ -22,24 +22,26 @@ public class PerguntaResposta extends JFrame implements ActionListener{
     JTextField caixa2;
     
     JButton enviar;
-    
+    JButton buttonHistorico;
     
     private Assistente assistente = new Assistente();
-   
-    
+    private HistoricoController historicoController;
+
+    public void setHistoricoControllerPergunta(HistoricoController historicoController) {
+    	this.historicoController = historicoController;
+    }
+	
     public PerguntaResposta() {
         
-		JFrame jFrame = new JFrame();
-		setTitle("Aba de perguntas e respostas");
-	
-	
+	JFrame jFrame = new JFrame();
+	setTitle("Aba de perguntas e respostas");
         setBackground(Color.yellow);
         setSize( 800,450);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
         setLocationRelativeTo(null);
         setLayout(null);
-        
+	
         title = new JLabel("Pergunta / Resposta");
         title.setFont(new Font("Arial", Font.BOLD, 30));
         title.setBounds(235, 20, 300, 100);
@@ -49,8 +51,7 @@ public class PerguntaResposta extends JFrame implements ActionListener{
         jLabel = new JLabel("Insira sua pergunta:");
         jLabel.setBounds(115, 105, 200, 50);
         jLabel.setFont(new Font("Arial", Font.PLAIN, 14));
-  
-                 
+       
         add(jLabel);
         
         caixa1 = new JTextField();
@@ -89,26 +90,26 @@ public class PerguntaResposta extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent event) {
 		if (event.getSource() == enviar){
 			assistente.setPergunta(caixa1.getText());
+			
 			try {
 				String resposta = assistente.fazerPergunta();
 				caixa2.setText(resposta);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				e.printStackTrace();	
 			}
+			
+	}	
+		
+		if (event.getSource() == buttonHistorico){
+			limparCaixa();
+			this.dispose();
+			
+			historicoController.salvarNaTabela();
+			
+		}
+		
 	}
-		
-		
-		
-	}
-       
-        
-  
-
-    
-   
-
-    
-
+	
 }
    
