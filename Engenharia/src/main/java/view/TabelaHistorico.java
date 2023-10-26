@@ -91,7 +91,7 @@ public class TabelaHistorico extends javax.swing.JFrame {
 	    	}
 	    
 		public void gerarTabela(){
-			 colunas = new Object[]{"Email", "Documento"};
+			 colunas = new Object[]{"Email", "Documento", "Data e hora"};
 		     itens = new Object[colunas.length];
 
 		     // modelo
@@ -104,6 +104,9 @@ public class TabelaHistorico extends javax.swing.JFrame {
 
 	            // documento na segunda coluna
 	            itens[1] = dado.getDocumento();
+
+    		    //data e hora na terceira coluna
+	            itens[2] = dado.getDataEHora();
 
 	        
 
