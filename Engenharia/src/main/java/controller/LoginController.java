@@ -54,7 +54,7 @@ public class LoginController {
 		
 		if(existe) {
 			
-			File template = new File(System.getProperty("user.dir")+"/src/main/java/_Engenharia/template.txt");
+			//File template = new File(System.getProperty("user.dir")+"/src/main/java/_Engenharia/template.txt");
 	    	
 			
 			uploadArquivo = new UploadArquivo();
