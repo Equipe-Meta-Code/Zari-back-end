@@ -11,6 +11,8 @@ import dao.UsuarioDao;
 import model.Usuario;
 import view.LoginView;
 import view.UploadArquivo;
+import view.TabelaHistorico;
+import view.UploadArquivo;
 
 
 public class LoginController {
