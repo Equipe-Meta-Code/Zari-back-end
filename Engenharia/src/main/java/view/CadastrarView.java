@@ -23,7 +23,6 @@ import javax.swing.JTextField;
 import javax.swing.JCheckBox;
 import javax.swing.JPasswordField;
 import controller.FormCadastroController;
-import dao.Conexao;
 import dao.UsuarioDao;
 import model.Usuario;
 
