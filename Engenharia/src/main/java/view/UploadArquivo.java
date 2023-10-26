@@ -26,7 +26,7 @@ public class UploadArquivo extends JFrame implements ActionListener{
     String arquivoPath;
     public String arquivoAcessado;
 
-    private PerguntaResposta perguntaResposta =new PerguntaResposta();
+    private ChatApp chatApp = new ChatApp();
 
     private HistoricoController historicoController;
 
@@ -36,7 +36,7 @@ public class UploadArquivo extends JFrame implements ActionListener{
 	
     public UploadArquivo(){
 	    
-       perguntaResposta.setVisible(false);
+       chatApp.setVisible(false);
 	    
        //Titulo
 	    
@@ -161,13 +161,13 @@ public class UploadArquivo extends JFrame implements ActionListener{
 					// TODO Auto-generated catch block
 					e2.printStackTrace();
 				}
-		perguntaResposta.setVisible(true);       //Cria a tela de pergunta
+		chatApp.setVisible(true);      //Cria a tela de pergunta
             	
                 this.setVisible(false);
 		    
             }
 		
-            perguntaResposta.setHistoricoControllerPergunta(historicoController);         //Cria a tela de pergunta
+            chatApp.setHistoricoControllerChat(historicoController);         //Cria a tela de pergunta
                 
         }
         
