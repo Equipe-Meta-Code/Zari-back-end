@@ -16,9 +16,8 @@ public class UsuarioDao {
 	private final Connection connection;
 
 	public UsuarioDao(Connection connection) {
-		super();
-		this.connection = connection;
-	}
+        this.connection = new databaseConnection().getConnection();
+    }
 	
 	public void insert(Usuario usuario) throws SQLException {
 		
