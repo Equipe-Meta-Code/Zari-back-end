@@ -10,6 +10,9 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -99,6 +102,20 @@ public class UploadArquivo extends JFrame implements ActionListener{
 		 arquivoAcessado = (arquivo.getName());
                 
                 historicoController.setDocumento(arquivoAcessado);
+
+		Date dataHoraAtual = new Date();
+                LocalDateTime agora = LocalDateTime.now();
+         
+                // formatar a data
+                DateTimeFormatter formatterData = DateTimeFormatter.ofPattern("dd/MM/uuuu");
+                String data = formatterData.format(agora);
+         
+                // formatar a hora
+                DateTimeFormatter formatterHora = DateTimeFormatter.ofPattern("HH:mm:ss");
+                String hora = formatterHora.format(agora);
+                
+                String dataEHora = data+' '+hora;
+                historicoController.setDataEHora(dataEHora);
                 
                 historicoController.salvarHistorico();
                 
