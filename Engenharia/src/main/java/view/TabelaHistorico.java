@@ -91,27 +91,25 @@ public class TabelaHistorico extends javax.swing.JFrame {
 	    	}
 	    
 		public void gerarTabela(){
-			 colunas = new Object[]{"Email", "Documento", "Data e hora"};
+		     colunas = new Object[]{"Data e hora", "Email", "Documento"};
 		     itens = new Object[colunas.length];
 
 		     // modelo
 		     defalultTableModel = new DefaultTableModel(null, colunas);
-		     
-		        
+
 			for (Historico dado : dados) {
-	            // email na primeira coluna
-	            itens[0] = dado.getEmailHistorico();
+				
+		     //data e hora na primeira coluna
+	             itens[0] = dado.getDataEHora();
+	            
+	             // email na segunda coluna
+	             itens[1] = dado.getEmailHistorico();
 
-	            // documento na segunda coluna
-	            itens[1] = dado.getDocumento();
+	             // documento na terceira coluna
+	             itens[2] = dado.getDocumento();
 
-    		    //data e hora na terceira coluna
-	            itens[2] = dado.getDataEHora();
-
-	        
-
-	            // adiciona os itens no modelo
-	            defalultTableModel.addRow(itens);
+	             // adiciona os itens no modelo
+	             defalultTableModel.addRow(itens);
 	        }
 
 	        // adicionar modelo a la tabla
