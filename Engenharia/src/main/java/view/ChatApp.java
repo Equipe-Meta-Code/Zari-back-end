@@ -166,15 +166,17 @@ public class ChatApp extends JFrame implements ActionListener{
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
-            public void run() {
-                ChatApp chatApp = new ChatApp();
-                chatApp.addWindowListener(new WindowAdapter() {
-                    public void windowClosing(WindowEvent e) {
-                    	chatApp.saveMessage();
-                    	chatApp.conversationId++;
-                   }
-                });
-            }
+            public void windowClosing(WindowEvent e) {
+                        try {
+                            chatApp.saveMessage();
+                            chatApp.conversationId++;
+                        } catch (Exception ex) {
+                            ex.printStackTrace();
+
+                            // Exibir uma mensagem de erro com JOptionPane
+                            JOptionPane.showMessageDialog(chatApp, "Erro ao salvar as mensagens.", "Erro", JOptionPane.ERROR_MESSAGE);
+                        }
+         }
         });
     }
 
