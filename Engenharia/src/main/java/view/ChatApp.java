@@ -83,7 +83,20 @@ public class ChatApp extends JFrame implements ActionListener{
         buttonHistorico.setPreferredSize(new Dimension(100, 10)); // Ajuste de posicionamento e tamanho
         titlePanel.add(buttonHistorico, BorderLayout.EAST);
         buttonHistorico.addActionListener(this); 
- 
+
+	 addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                try {
+                    saveMessage();
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+
+                    // Exibir uma mensagem de erro com JOptionPane
+                    JOptionPane.showMessageDialog(ChatApp.this, "Erro ao salvar as mensagens.", "Erro", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+	    
         setVisible(true);
     }
  
@@ -162,23 +175,5 @@ public class ChatApp extends JFrame implements ActionListener{
 		}
 		
 	}
- 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void windowClosing(WindowEvent e) {
-                        try {
-                            chatApp.saveMessage();
-                            chatApp.conversationId++;
-                        } catch (Exception ex) {
-                            ex.printStackTrace();
-
-                            // Exibir uma mensagem de erro com JOptionPane
-                            JOptionPane.showMessageDialog(chatApp, "Erro ao salvar as mensagens.", "Erro", JOptionPane.ERROR_MESSAGE);
-                        }
-         }
-        });
-    }
-
 	
 }
