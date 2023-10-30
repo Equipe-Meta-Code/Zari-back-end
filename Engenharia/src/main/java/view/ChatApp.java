@@ -52,11 +52,14 @@ public class ChatApp extends JFrame implements ActionListener{
 
         JPanel chatPanel = new JPanel(new BorderLayout());
         mainPanel.add(chatPanel);
+
+	JPanel titlePanel = new JPanel(new BorderLayout());
+        mainPanel.add(titlePanel, BorderLayout.NORTH);
  
         JLabel titleLabel = new JLabel("CHAT");
         titleLabel.setFont(new Font("Arial", Font.BOLD, 24));
         titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        chatPanel.add(titleLabel, BorderLayout.NORTH);
+        titlePanel.add(titleLabel, BorderLayout.CENTER);
  
         chatArea = new JTextPane();
         chatArea.setEditable(false);
@@ -81,9 +84,22 @@ public class ChatApp extends JFrame implements ActionListener{
         
         buttonHistorico = new JButton("Histórico");
         buttonHistorico.setPreferredSize(new Dimension(100, 10)); // Ajuste de posicionamento e tamanho
-        inputPanel.add(buttonHistorico, BorderLayout.EAST);
+        titlePanel.add(buttonHistorico, BorderLayout.EAST);
         buttonHistorico.addActionListener(this); 
- 
+
+	 addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                try {
+                    saveMessage();
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+
+                    // Exibir uma mensagem de erro com JOptionPane
+                    JOptionPane.showMessageDialog(ChatApp.this, "Erro ao salvar as mensagens.", "Erro", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        });
+	    
         setVisible(true);
     }
  
@@ -161,21 +177,5 @@ public class ChatApp extends JFrame implements ActionListener{
 		}
 		
 	}
- 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                ChatApp chatApp = new ChatApp();
-                chatApp.addWindowListener(new WindowAdapter() {
-                    public void windowClosing(WindowEvent e) {
-                    	chatApp.saveMessage();
-                    	chatApp.conversationId++;
-                   }
-                });
-            }
-        });
-    }
-
 	
 }
