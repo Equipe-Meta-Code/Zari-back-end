@@ -161,7 +161,7 @@ public class UploadArquivo extends JFrame implements ActionListener{
 					// TODO Auto-generated catch block
 					e2.printStackTrace();
 				}
-		chatApp.setVisible(true);      //Cria a tela de pergunta
+        		chatApp.setVisible(true);      //Cria a tela de pergunta
             	
                 this.setVisible(false);
 		    

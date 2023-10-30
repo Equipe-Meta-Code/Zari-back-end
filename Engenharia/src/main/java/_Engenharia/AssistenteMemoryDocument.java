@@ -1,4 +1,4 @@
-package assistente;
+package _Engenharia;
 
 import dev.langchain4j.chain.ConversationalRetrievalChain;
 import dev.langchain4j.data.document.Document;
@@ -38,6 +38,8 @@ import static dev.langchain4j.model.openai.OpenAiModelName.GPT_3_5_TURBO;
 import static java.util.stream.Collectors.joining;
 
 import static java.time.Duration.ofSeconds;
+
+import assistente.ApiKeys;
 
 public class AssistenteMemoryDocument {
 

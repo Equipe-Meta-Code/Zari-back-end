@@ -3,13 +3,11 @@ package view;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
  
-import assistente.AssistenteMemoryDocument;
+import _Engenharia.AssistenteMemoryDocument;
 import controller.HistoricoController;
 import dao.*;
  
 import javax.swing.text.*;
-
-import assistente.AssistenteMemoryDocument;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
