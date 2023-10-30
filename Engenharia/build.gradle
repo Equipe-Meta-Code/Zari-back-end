@@ -14,11 +14,22 @@ repositories {
 dependencies {
   	implementation 'com.google.guava:guava:29.0-jre'
   
-  	implementation 'dev.langchain4j:langchain4j:0.22.0'
-  
   // https://mvnrepository.com/artifact/com.mysql/mysql-connector-j
 	implementation group: 'com.mysql', name: 'mysql-connector-j', version: '8.1.0'
   
+  	implementation 'dev.langchain4j:langchain4j:0.23.0'
+    
+    implementation 'dev.langchain4j:langchain4j-open-ai:0.23.0'
+    
+    implementation 'dev.langchain4j:langchain4j-hugging-face:0.23.0'
+    
+    
+    compileOnly 'org.projectlombok:lombok:1.18.30'
+	annotationProcessor 'org.projectlombok:lombok:1.18.30'
+	
+	testCompileOnly 'org.projectlombok:lombok:1.18.30'
+	testAnnotationProcessor 'org.projectlombok:lombok:1.18.30'
+	
 }
 
 java {

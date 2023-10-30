@@ -1,0 +1,12 @@
+package assistente;
+
+public class ApiKeys {
+
+    // You can use "demo" api key for demonstration purposes.
+    // You can get your own OpenAI API key here: https://platform.openai.com/account/api-keys
+    public static final String OPENAI_API_KEY = "demo";
+
+    // You can get your own HuggingFace API key here: https://huggingface.co/settings/tokens
+    public static final String HF_API_KEY = "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";
+
+}

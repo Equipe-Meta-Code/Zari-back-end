@@ -3,11 +3,14 @@ package view;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
  
-import _Engenharia.Assistente;
+import assistente.AssistenteMemoryDocument;
 import controller.HistoricoController;
 import dao.*;
  
 import javax.swing.text.*;
+
+import assistente.AssistenteMemoryDocument;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -22,7 +25,7 @@ import java.sql.Connection;
  
 public class ChatApp extends JFrame implements ActionListener{
 	private int conversationId = 0;
-    private Assistente assistente;
+    private AssistenteMemoryDocument assistente;  //Seta varial para objeto
     private JTextPane chatArea;
     private JTextField inputField;
     JButton buttonHistorico;
@@ -36,7 +39,7 @@ public class ChatApp extends JFrame implements ActionListener{
 	}
  
     public ChatApp() {
-        assistente = new Assistente();
+    	assistente = new AssistenteMemoryDocument(); //Cria novo objeto assistnte (que possui o metodo fazerPergunta(String pergunta))
         conversation = new ArrayList<>();
         setTitle("Assistente Virtual");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -88,9 +91,8 @@ public class ChatApp extends JFrame implements ActionListener{
         String message = inputField.getText();
         appendToChat("Você: " + message);
         inputField.setText("");
-        assistente.setPergunta(message);
         try {
-            String answer = assistente.fazerPergunta();
+        	String answer = assistente.fazerPergunta(message);    //envia pergunta para o bot e devolve resposta String
             appendToChat("Assistente Zari: " + answer);
         } catch (Exception e) {
             appendToChat("Assistente Zari: Erro ao obter resposta do assistente.");
