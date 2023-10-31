@@ -22,6 +22,8 @@ dependencies {
     implementation 'dev.langchain4j:langchain4j-open-ai:0.23.0'
     
     implementation 'dev.langchain4j:langchain4j-hugging-face:0.23.0'
+
+    implementation group: 'org.apache.pdfbox', name: 'pdfbox', version: '2.0.18'
     
     
     compileOnly 'org.projectlombok:lombok:1.18.30'
