@@ -207,6 +207,7 @@ public class UploadArquivo extends JFrame implements ActionListener{
                            String pdfText;
                            pdfText = stripper.getText(document).toString();
                            out.println(pdfText);
+			   document.close();
                         
                        } catch (IOException e1) {
                            // TODO Auto-generated catch block
