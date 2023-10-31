@@ -206,7 +206,6 @@ public class UploadArquivo extends JFrame implements ActionListener{
                            document = PDDocument.load( new File(fileName));
                            String pdfText;
                            pdfText = stripper.getText(document).toString();
-                           System.out.println(pdfText);
                            out.println(pdfText);
                         
                        } catch (IOException e1) {
