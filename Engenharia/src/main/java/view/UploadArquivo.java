@@ -5,9 +5,11 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDateTime;
@@ -17,11 +19,15 @@ import java.util.Date;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.text.PDFTextStripper;
+
 import controller.HistoricoController;
 
 public class UploadArquivo extends JFrame implements ActionListener{
 	
     JButton upload;
+    JButton uploadpdf;
     JButton historico;
     String arquivoPath;
     public String arquivoAcessado;
@@ -52,7 +58,15 @@ public class UploadArquivo extends JFrame implements ActionListener{
        upload.setFocusable(false);
        upload.setText("Selecione um Arquivo...");
        upload.addActionListener(this);     //Propriedade que detecta se o botão esta sento clicado
-        
+	    
+	//Botão para abrir selecionador de arquivos
+       uploadpdf = new JButton();
+       uploadpdf.setBounds((450/2)-90, 150, 180, 32);
+       uploadpdf.setHorizontalTextPosition(JButton.CENTER);
+       uploadpdf.setFocusable(false);
+       uploadpdf.setText("Selecione um Arquivo PDF...");
+       uploadpdf.addActionListener(this);     //Propriedade que detecta se o botão esta sento clicado
+	    
        historico = new JButton();
 
        historico.setBounds((450/2)-90, 150, 180, 32);
@@ -70,6 +84,7 @@ public class UploadArquivo extends JFrame implements ActionListener{
        
        //adiciona o botão e o titulo para o frame(tela)
        this.add(upload);
+       this.add(uploadpdf);
        this.add(historico);
        this.add(title);
        
@@ -170,7 +185,63 @@ public class UploadArquivo extends JFrame implements ActionListener{
             chatApp.setHistoricoControllerChat(historicoController);         //Cria a tela de pergunta
                 
         }
-        
+      if (e.getSource() == uploadpdf){
+    		
+        	
+        	FileNameExtensionFilter filtropdf = new FileNameExtensionFilter("Pdf Files", "pdf");   //Cria filtro para permitir selecionar apenas certos tipos de arquivos
+        	
+            JFileChooser explorador_pdf = new JFileChooser();     //Cria uma janela para selecionar o arquivo
+            explorador_pdf.setFileFilter(filtropdf);                 //Aplica o filtro ao selecionador de arquivos
+            int respostapdf = explorador_pdf.showOpenDialog(null);
+            
+            if(respostapdf == JFileChooser.APPROVE_OPTION){
+            	
+                
+                String fileName = explorador_pdf.getSelectedFile().getAbsolutePath(); // provide the path to pdf file
+                PDDocument document = null;
+
+
+                    try (PrintWriter out = new PrintWriter("src/main/java/_Engenharia/template.txt")){
+                        PDFTextStripper stripper = new PDFTextStripper();
+                           document = PDDocument.load( new File(fileName));
+                           String pdfText;
+                           pdfText = stripper.getText(document).toString();
+                           System.out.println(pdfText);
+                           out.println(pdfText);
+                        
+                       } catch (IOException e1) {
+                           // TODO Auto-generated catch block
+                           e1.printStackTrace();
+                       } 
+                    
+                    arquivoAcessado = (fileName);
+                    
+                    historicoController.setDocumento(arquivoAcessado);
+
+                    //Coletar a data e hora em que o arquivo foi inserido pelo usuÃ¡rio
+                    Date dataHoraAtual = new Date(); 
+                    LocalDateTime agora = LocalDateTime.now();
+             
+                    	// formatar a data
+                    DateTimeFormatter formatterData = DateTimeFormatter.ofPattern("dd/MM/uuuu");
+                    String data = formatterData.format(agora);
+             
+                    	// formatar a hora
+                    DateTimeFormatter formatterHora = DateTimeFormatter.ofPattern("HH:mm:ss");
+                    String hora = formatterHora.format(agora);
+                    
+                    String dataEHora = data+' '+hora;
+                    historicoController.setDataEHora(dataEHora);
+    		    
+                    historicoController.salvarHistorico();
+                    chatApp.setVisible(true);      //Cria a tela de pergunta
+                	
+                    this.setVisible(false);
+                 
+                    
+        }
+            
+		}  
     }
     
     public String getArquivoPath() {
