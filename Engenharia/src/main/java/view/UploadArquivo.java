@@ -195,8 +195,8 @@ public class UploadArquivo extends JFrame implements ActionListener{
             int respostapdf = explorador_pdf.showOpenDialog(null);
             
             if(respostapdf == JFileChooser.APPROVE_OPTION){
-            	
-                
+
+		File arquivo = new File(explorador_pdf.getSelectedFile().getAbsolutePath());  //pega o caminho do arquivo selecionad
                 String fileName = explorador_pdf.getSelectedFile().getAbsolutePath(); // provide the path to pdf file
                 PDDocument document = null;
 
@@ -213,8 +213,8 @@ public class UploadArquivo extends JFrame implements ActionListener{
                            // TODO Auto-generated catch block
                            e1.printStackTrace();
                        } 
-                    
-                    arquivoAcessado = (fileName);
+
+                    arquivoAcessado = (arquivo.getName());
                     
                     historicoController.setDocumento(arquivoAcessado);
 
