@@ -69,7 +69,7 @@ public class UploadArquivo extends JFrame implements ActionListener{
 	    
        historico = new JButton();
 
-       historico.setBounds((450/2)-90, 150, 180, 32);
+       historico.setBounds((450/2)-90, ,200, 180, 32);
        historico.setHorizontalTextPosition(JButton.CENTER);
        historico.setFocusable(false);
        historico.setText("Historico");
