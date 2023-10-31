@@ -240,7 +240,7 @@ public class UploadArquivo extends JFrame implements ActionListener{
                  
                     
         }
-            
+  	chatApp.setHistoricoControllerChat(historicoController);         //Cria a tela de pergunta          
 		}  
     }
     
