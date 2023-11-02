@@ -26,9 +26,9 @@ import controller.HistoricoController;
 
 public class UploadArquivo extends JFrame implements ActionListener{
 	
-    JButton upload;
-    JButton uploadpdf;
-    JButton historico;
+	RoundButton upload;
+    RoundButton uploadpdf;
+    RoundButton historico;
     String arquivoPath;
     public String arquivoAcessado;
 
@@ -52,27 +52,24 @@ public class UploadArquivo extends JFrame implements ActionListener{
        title.setFont(new Font("Arial", Font.BOLD, 30));
               
        //Botão para abrir selecionador de arquivos
-       upload = new JButton();
-       upload.setBounds((450/2)-90, 100, 180, 32);
+       upload = new RoundButton("Selecione um Arquivo...");
+       upload.setBounds((450/2)-110, 100, 200, 32);
        upload.setHorizontalTextPosition(JButton.CENTER);
        upload.setFocusable(false);
-       upload.setText("Selecione um Arquivo...");
        upload.addActionListener(this);     //Propriedade que detecta se o botão esta sento clicado
 	    
 	//Botão para abrir selecionador de arquivos
-       uploadpdf = new JButton();
-       uploadpdf.setBounds((450/2)-90, 150, 180, 32);
+       uploadpdf = new RoundButton("Selecione um Arquivo PDF");
+       uploadpdf.setBounds((450/2)-110, 150, 200, 32);
        uploadpdf.setHorizontalTextPosition(JButton.CENTER);
        uploadpdf.setFocusable(false);
-       uploadpdf.setText("Selecione um Arquivo PDF...");
        uploadpdf.addActionListener(this);     //Propriedade que detecta se o botão esta sento clicado
 	    
-       historico = new JButton();
+       historico = new RoundButton("Histórico");
 
-       historico.setBounds((450/2)-90, 200, 180, 32);
+       historico.setBounds((450/2)-110, 200, 200, 32);
        historico.setHorizontalTextPosition(JButton.CENTER);
        historico.setFocusable(false);
-       historico.setText("Historico");
        historico.addActionListener(this); 
 	    
        this.setSize(450,450);

@@ -13,7 +13,7 @@ public class TabelaHistorico extends javax.swing.JFrame {
 
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabela;
-    private javax.swing.JButton jBVoltar;
+    private RoundButton jBVoltar;
     
     private DefaultTableModel defalultTableModel;
     private Object[] colunas;
@@ -46,7 +46,7 @@ public class TabelaHistorico extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tabela = new javax.swing.JTable();
-        jBVoltar = new javax.swing.JButton();
+        jBVoltar = new RoundButton("Voltar");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         jScrollPane1.setViewportView(tabela);

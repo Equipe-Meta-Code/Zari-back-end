@@ -42,8 +42,8 @@ public class CadastrarView extends JFrame implements ActionListener{
      JLabel jLabelvalidationLabel;
     
     JCheckBox buttonShow;
-    JButton voltar;
-    JButton salvar;
+    RoundButton voltar;
+    RoundButton salvar;
 	private final FormCadastroController controller;
     
   
@@ -157,13 +157,13 @@ public class CadastrarView extends JFrame implements ActionListener{
         	} 
         });
         
-        voltar = new JButton("Voltar");
+        voltar = new RoundButton("Voltar");
         voltar.setBounds(300, 335, 85, 30);
         add(voltar);
         
         voltar.addActionListener(this);
 	    
-        salvar = new JButton("Salvar");
+        salvar = new RoundButton("Salvar");
         salvar.setBounds(415, 335, 85, 30);
         add(salvar);
         

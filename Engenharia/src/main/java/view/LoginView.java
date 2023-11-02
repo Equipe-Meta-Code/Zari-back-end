@@ -33,8 +33,8 @@ public class LoginView extends JFrame implements ActionListener{
     JTextField loginEmail;
     JPasswordField loginSenha;
     
-    JButton cadastrar;
-    JButton entrar;
+    RoundButton cadastrar;
+    RoundButton entrar;
     JCheckBox buttonShow;
     
 	private LoginController controller;
@@ -103,14 +103,14 @@ public class LoginView extends JFrame implements ActionListener{
         	} 
         });
         
-        entrar = new JButton("Entrar");
+        entrar = new RoundButton("Entrar");
         entrar.setBounds(340, 255, 85, 30);
         add(entrar);
         
         entrar.addActionListener(this);
      
         
-        cadastrar = new JButton("Cadastrar");
+        cadastrar = new RoundButton("Cadastrar");
         cadastrar.setBounds(335, 295, 95, 30);
         add(cadastrar);
         

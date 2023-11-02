@@ -16,8 +16,8 @@ public class TelaInicial extends JFrame implements ActionListener {
 	JLabel title;
 	JLabel textoEntrar;
 	JLabel textoCadastrar;
-	JButton buttonEntrar;
-    JButton buttonCadastrar;
+	RoundButton buttonEntrar;
+	RoundButton buttonCadastrar;
       
     public TelaInicial() {
     	
@@ -45,7 +45,7 @@ public class TelaInicial extends JFrame implements ActionListener {
         textoEntrar.setBounds(140, 270, 400, 20);
         add(textoEntrar);
         
-        buttonEntrar = new JButton("Entrar");
+        buttonEntrar = new RoundButton("Entrar");
         buttonEntrar.setBounds(165, 300, 100, 30); 
         add(buttonEntrar);
         
@@ -56,7 +56,7 @@ public class TelaInicial extends JFrame implements ActionListener {
         textoCadastrar.setBounds(480, 270, 400, 20);
         add(textoCadastrar);
 
-        buttonCadastrar = new JButton("Cadastrar"); 
+        buttonCadastrar = new RoundButton("Cadastrar"); 
         buttonCadastrar.setBounds(525, 300, 100, 30); // Ajuste de posicionamento e tamanho
         add(buttonCadastrar);
         

@@ -21,8 +21,8 @@ public class PerguntaResposta extends JFrame implements ActionListener{
     JTextField caixa1;
     JTextField caixa2;
     
-    JButton enviar;
-    JButton buttonHistorico;
+    RoundButton enviar;
+    RoundButton buttonHistorico;
     
     private Assistente assistente = new Assistente();
     private HistoricoController historicoController;
@@ -58,7 +58,7 @@ public class PerguntaResposta extends JFrame implements ActionListener{
         caixa1.setBounds(115, 145, 550, 40);
         caixa1.setFont(new Font("Arial", Font.ITALIC, 15));
         
-        enviar = new JButton("Enviar");
+        enviar = new RoundButton("Enviar");
         enviar.setBounds(325, 190, 85, 30);
         add(enviar);
         
@@ -80,7 +80,7 @@ public class PerguntaResposta extends JFrame implements ActionListener{
         add(caixa2);
 
 	//botao historico
-	buttonHistorico = new JButton("Histórico");
+	buttonHistorico = new RoundButton("Histórico");
         buttonHistorico.setBounds(325, 350, 100, 30); // Ajuste de posicionamento e tamanho
         add(buttonHistorico);
         buttonHistorico.addActionListener(this); 

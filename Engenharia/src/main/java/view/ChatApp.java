@@ -26,7 +26,7 @@ public class ChatApp extends JFrame implements ActionListener{
     private AssistenteMemoryDocument assistente;  //Seta varial para objeto
     private JTextPane chatArea;
     private JTextField inputField;
-    JButton buttonHistorico;
+    RoundButton buttonHistorico;
     
     private List<String> conversation;
     
@@ -80,7 +80,7 @@ public class ChatApp extends JFrame implements ActionListener{
         inputPanel.add(inputField, BorderLayout.CENTER);
         
         
-        buttonHistorico = new JButton("Histórico");
+        buttonHistorico = new RoundButton("Histórico");
         buttonHistorico.setPreferredSize(new Dimension(100, 10)); // Ajuste de posicionamento e tamanho
         titlePanel.add(buttonHistorico, BorderLayout.EAST);
         buttonHistorico.addActionListener(this); 
