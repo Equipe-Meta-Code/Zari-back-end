@@ -44,7 +44,7 @@ import assistente.ApiKeys;
 public class AssistenteMemoryDocument {
 
 	
-	private static final String vetmodel = "sentence-transformers/all-MiniLM-L6-v2";
+	private static final String vetModel = "sentence-transformers/all-MiniLM-L6-v2";
 	
 	private static final ChatMemory chatMemory = TokenWindowChatMemory.withMaxTokens(300, new OpenAiTokenizer(GPT_3_5_TURBO));
 	
@@ -68,7 +68,7 @@ public class AssistenteMemoryDocument {
         //EmbeddingModel Builder HuggingFace
         EmbeddingModel embeddingModel = HuggingFaceEmbeddingModel.builder()
                 .accessToken(ApiKeys.HF_API_KEY)
-                .modelId(vetmodel)
+                .modelId(vetModel)
                 .waitForModel(true)
                 .timeout(ofSeconds(60))
                 .build();
