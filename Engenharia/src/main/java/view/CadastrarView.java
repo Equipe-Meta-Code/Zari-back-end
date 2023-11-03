@@ -39,7 +39,7 @@ public class CadastrarView extends JFrame implements ActionListener{
     JPasswordField textSenha;
     JTextField textEmail;
 
-     JLabel jLabelvalidationLabel;
+     JLabel jLabelValidationLabel;
     
     JCheckBox buttonShow;
     RoundButton voltar;
@@ -103,19 +103,19 @@ public class CadastrarView extends JFrame implements ActionListener{
         add(textEmail);
 
          //validar o formato de email
-         jLabelvalidationLabel = new JLabel();
-         jLabelvalidationLabel.setBounds(335, 225, 550, 40);
-         jLabelvalidationLabel.setFont(new Font("Arial", Font.ITALIC, 15));
+         jLabelValidationLabel = new JLabel();
+         jLabelValidationLabel.setBounds(335, 225, 550, 40);
+         jLabelValidationLabel.setFont(new Font("Arial", Font.ITALIC, 15));
  
-         add(jLabelvalidationLabel);
+         add(jLabelValidationLabel);
 
          textEmail.addKeyListener(new KeyListener(){
              public void keyReleased(KeyEvent e) {
                  String email = textEmail.getText();
                  if (isValidEmail(email)) {
-                     jLabelvalidationLabel.setText("Email válido");
+                     jLabelValidationLabel.setText("Email válido");
                  } else {
-                     jLabelvalidationLabel.setText("Email inválido");
+                     jLabelValidationLabel.setText("Email inválido");
                  }
              }
 
@@ -210,11 +210,11 @@ public class CadastrarView extends JFrame implements ActionListener{
 	}
 
     public JLabel getValidationLabel() {
-        return jLabelvalidationLabel;
+        return jLabelValidationLabel;
     }
 
     public void setValidationLabel(JLabel validationLabel) {
-        this.jLabelvalidationLabel = validationLabel;
+        this.jLabelValidationLabel = validationLabel;
     }
     
     private boolean isValidEmail(String email) {
@@ -234,7 +234,7 @@ public class CadastrarView extends JFrame implements ActionListener{
                 JOptionPane.showMessageDialog(this, "Email inválido.");
             }
 			this.dispose();
-			new CadastrarView();
+			new LoginView();
 			
 		}
 
