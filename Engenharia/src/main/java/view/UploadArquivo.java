@@ -27,7 +27,7 @@ import controller.HistoricoController;
 public class UploadArquivo extends JFrame implements ActionListener{
 	
 	RoundButton upload;
-    RoundButton uploadpdf;
+    RoundButton uploadPdf;
     RoundButton historico;
     String arquivoPath;
     public String arquivoAcessado;
@@ -59,11 +59,11 @@ public class UploadArquivo extends JFrame implements ActionListener{
        upload.addActionListener(this);     //Propriedade que detecta se o botão esta sento clicado
 	    
 	//Botão para abrir selecionador de arquivos
-       uploadpdf = new RoundButton("Selecione um Arquivo PDF");
-       uploadpdf.setBounds((450/2)-110, 150, 200, 32);
-       uploadpdf.setHorizontalTextPosition(JButton.CENTER);
-       uploadpdf.setFocusable(false);
-       uploadpdf.addActionListener(this);     //Propriedade que detecta se o botão esta sento clicado
+       uploadPdf = new RoundButton("Selecione um Arquivo PDF");
+       uploadPdf.setBounds((450/2)-110, 150, 200, 32);
+       uploadPdf.setHorizontalTextPosition(JButton.CENTER);
+       uploadPdf.setFocusable(false);
+       uploadPdf.addActionListener(this);     //Propriedade que detecta se o botão esta sento clicado
 	    
        historico = new RoundButton("Histórico");
 
@@ -81,7 +81,7 @@ public class UploadArquivo extends JFrame implements ActionListener{
        
        //adiciona o botão e o titulo para o frame(tela)
        this.add(upload);
-       this.add(uploadpdf);
+       this.add(uploadPdf);
        this.add(historico);
        this.add(title);
        
@@ -182,16 +182,16 @@ public class UploadArquivo extends JFrame implements ActionListener{
             chatApp.setHistoricoControllerChat(historicoController);         //Cria a tela de pergunta
                 
         }
-      if (e.getSource() == uploadpdf){
+      if (e.getSource() == uploadPdf){
     		
         	
-        	FileNameExtensionFilter filtropdf = new FileNameExtensionFilter("Pdf Files", "pdf");   //Cria filtro para permitir selecionar apenas certos tipos de arquivos
+        	FileNameExtensionFilter filtroPdf = new FileNameExtensionFilter("Pdf Files", "pdf");   //Cria filtro para permitir selecionar apenas certos tipos de arquivos
         	
             JFileChooser explorador_pdf = new JFileChooser();     //Cria uma janela para selecionar o arquivo
-            explorador_pdf.setFileFilter(filtropdf);                 //Aplica o filtro ao selecionador de arquivos
-            int respostapdf = explorador_pdf.showOpenDialog(null);
+            explorador_pdf.setFileFilter(filtroPdf);                 //Aplica o filtro ao selecionador de arquivos
+            int respostaPdf = explorador_pdf.showOpenDialog(null);
             
-            if(respostapdf == JFileChooser.APPROVE_OPTION){
+            if(respostaPdf == JFileChooser.APPROVE_OPTION){
 
 		File arquivo = new File(explorador_pdf.getSelectedFile().getAbsolutePath());  //pega o caminho do arquivo selecionad
                 String fileName = explorador_pdf.getSelectedFile().getAbsolutePath(); // provide the path to pdf file
