@@ -52,7 +52,7 @@ public class UploadArquivo extends JFrame implements ActionListener{
        title.setFont(new Font("Arial", Font.BOLD, 30));
               
        //Botão para abrir selecionador de arquivos
-       upload = new RoundButton("Selecione um Arquivo...");
+       upload = new RoundButton("Selecione um Arquivo TXT");
        upload.setBounds((450/2)-110, 100, 200, 32);
        upload.setHorizontalTextPosition(JButton.CENTER);
        upload.setFocusable(false);
