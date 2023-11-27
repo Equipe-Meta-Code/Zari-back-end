@@ -23,6 +23,7 @@ import javax.swing.JCheckBox;
 import controller.LoginController;
 import dao.UsuarioDao;
 import model.Usuario;
+import javax.swing.JPanel;
 
 
 public class LoginView extends JFrame implements ActionListener{
@@ -48,51 +49,51 @@ public class LoginView extends JFrame implements ActionListener{
 		JFrame JFrame = new JFrame("Login");
 		
 	
-        setSize( 800,450);
+        setSize( 550,450);
         setDefaultCloseOperation(LoginView.DISPOSE_ON_CLOSE);
         setResizable(false);
         setLocationRelativeTo(null);
-        setLayout(null);
+        getContentPane().setLayout(null);
         
         title = new JLabel("Login");
-        title.setFont(new Font("Arial", Font.BOLD, 30));
-        title.setBounds(340, 5, 300, 100);
+        title.setFont(new Font("Yu Gothic", Font.BOLD, 30));
+        title.setBounds(226, 11, 82, 100);
                 
-        add(title);
+        getContentPane().add(title);
         
         jLabelEmail = new JLabel("Email:");
-        jLabelEmail.setBounds(115, 75, 200, 50);
-        jLabelEmail.setFont(new Font("Arial", Font.PLAIN, 14));
+        jLabelEmail.setBounds(106, 81, 46, 30);
+        jLabelEmail.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 16));
   
                  
-        add(jLabelEmail);
+        getContentPane().add(jLabelEmail);
         
         loginEmail = new JTextField();
-        loginEmail.setBounds(115, 115, 550, 40);
+        loginEmail.setBounds(106, 122, 300, 40);
         loginEmail.setFont(new Font("Arial", Font.ITALIC, 15));
         
-        add(loginEmail);
+        getContentPane().add(loginEmail);
         
         
         jLabelSenha = new JLabel("Senha:");
-        jLabelSenha.setBounds(115, 155, 250, 50);
-        jLabelSenha.setFont(new Font("Arial", Font.PLAIN, 14));
+        jLabelSenha.setBounds(106, 168, 56, 23);
+        jLabelSenha.setFont(new Font("Yu Gothic UI Semibold", Font.PLAIN, 16));
   
                  
-        add(jLabelSenha);
+        getContentPane().add(jLabelSenha);
         
         loginSenha = new JPasswordField();
-        loginSenha.setBounds(115, 195, 550, 40);
+        loginSenha.setBounds(106, 202, 300, 40);
         loginSenha.setFont(new Font("Arial", Font.ITALIC, 15));
                 
-        add(loginSenha);
+        getContentPane().add(loginSenha);
         
         //botao para mostrar senha 
         buttonShow = new JCheckBox("Mostrar Senha");
-        buttonShow.setBounds(540, 240, 250, 40);
-        buttonShow.setFont(new Font("Arial", Font.ITALIC, 15));
+        buttonShow.setBounds(321, 249, 125, 40);
+        buttonShow.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 15));
         
-        add(buttonShow);
+        getContentPane().add(buttonShow);
         
         buttonShow.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
@@ -104,15 +105,17 @@ public class LoginView extends JFrame implements ActionListener{
         });
         
         entrar = new RoundButton("Entrar");
-        entrar.setBounds(340, 255, 85, 30);
-        add(entrar);
+        entrar.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 15));
+        entrar.setBounds(200, 280, 100, 30);
+        getContentPane().add(entrar);
         
         entrar.addActionListener(this);
      
         
         cadastrar = new RoundButton("Cadastrar");
-        cadastrar.setBounds(335, 295, 95, 30);
-        add(cadastrar);
+        cadastrar.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 15));
+        cadastrar.setBounds(200, 321, 100, 30);
+        getContentPane().add(cadastrar);
         
         cadastrar.addActionListener(this);
         
@@ -161,10 +164,4 @@ public class LoginView extends JFrame implements ActionListener{
 		 
 		
 	}
-	
-	
-	
-	
-	  
-
 }
