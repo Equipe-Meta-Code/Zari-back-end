@@ -1,6 +1,7 @@
 package view;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
@@ -29,7 +30,13 @@ public class TelaInicial extends JFrame implements ActionListener {
         setResizable(true);
         setLocationRelativeTo(null);
         getContentPane().setLayout(null);
-
+        
+        
+        ImageIcon icon = new ImageIcon(getClass().getResource("zaribot.png"));
+        setIconImage(icon.getImage());
+        Image resizedIcon = icon.getImage().getScaledInstance(32, 32, Image.SCALE_SMOOTH);
+        ImageIcon finalIcon = new ImageIcon(resizedIcon);
+        setIconImage(finalIcon.getImage());
         
         ImageIcon imageIcon = new ImageIcon(getClass().getResource("zaribot.png"));
         JLabel imageLabel = new JLabel(imageIcon);
@@ -80,13 +87,10 @@ public class TelaInicial extends JFrame implements ActionListener {
 		if (event.getSource() == buttonEntrar){
 			this.dispose();
 			new LoginView();
-
 		}
 		
 		if (event.getSource() == buttonCadastrar){
 			this.dispose();
 			new CadastrarView();
-
-			
 		}
 }}
