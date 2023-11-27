@@ -1,5 +1,8 @@
 package view;
 
+import java.awt.Image;
+import javax.swing.ImageIcon;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -54,6 +57,12 @@ public class CadastrarView extends JFrame implements ActionListener{
         setResizable(false);
         setLocationRelativeTo(null);
         setLayout(null);
+
+	ImageIcon icon = new ImageIcon(getClass().getResource("zaribot.png"));
+        setIconImage(icon.getImage());
+        Image resizedIcon = icon.getImage().getScaledInstance(32, 32, Image.SCALE_SMOOTH);
+        ImageIcon finalIcon = new ImageIcon(resizedIcon);
+        setIconImage(finalIcon.getImage());
         
         title = new JLabel("Cadastrar");
         title.setFont(new Font("Arial", Font.BOLD, 30));
