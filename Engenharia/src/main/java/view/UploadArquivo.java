@@ -15,6 +15,8 @@ import java.io.PrintWriter;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -41,6 +43,11 @@ public class UploadArquivo extends JFrame implements ActionListener{
     }
 	
     public UploadArquivo(){
+       ImageIcon icon = new ImageIcon(getClass().getResource("zaribot.png"));
+       setIconImage(icon.getImage());
+       Image resizedIcon = icon.getImage().getScaledInstance(32, 32, Image.SCALE_SMOOTH);
+       ImageIcon finalIcon = new ImageIcon(resizedIcon);
+       etIconImage(finalIcon.getImage());
 	    
        chatApp.setVisible(false);
 	    
