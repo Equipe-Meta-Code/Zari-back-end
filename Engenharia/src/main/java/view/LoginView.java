@@ -2,6 +2,7 @@ package view;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
@@ -10,6 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
@@ -54,7 +56,13 @@ public class LoginView extends JFrame implements ActionListener{
         setResizable(false);
         setLocationRelativeTo(null);
         getContentPane().setLayout(null);
-        
+
+	ImageIcon icon = new ImageIcon(getClass().getResource("zaribot.png"));
+        setIconImage(icon.getImage());
+        Image resizedIcon = icon.getImage().getScaledInstance(32, 32, Image.SCALE_SMOOTH);
+        ImageIcon finalIcon = new ImageIcon(resizedIcon);
+        setIconImage(finalIcon.getImage());
+	    
         title = new JLabel("Login");
         title.setFont(new Font("Yu Gothic", Font.BOLD, 30));
         title.setBounds(226, 11, 82, 100);
