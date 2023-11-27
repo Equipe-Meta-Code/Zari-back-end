@@ -55,17 +55,17 @@ public class CadastrarView extends JFrame implements ActionListener{
 		JFrame jFrame = new JFrame();
 		setTitle("Cadastrar");
 	
-        setSize( 800,450);
+        setSize( 550,450);
         setDefaultCloseOperation(CadastrarView.DISPOSE_ON_CLOSE);
         setResizable(false);
         setLocationRelativeTo(null);
-        setLayout(null);
+        getContentPane().setLayout(null);
         
         title = new JLabel("Cadastrar");
         title.setFont(new Font("Arial", Font.BOLD, 30));
-        title.setBounds(310, 5, 300, 100);
+        title.setBounds(193, 0, 150, 100);
                 
-        add(title);
+        getContentPane().add(title);
         
         jLabelId = new JLabel("ID:");
         jLabelId.setBounds(115, 75, 200, 50);
@@ -82,32 +82,32 @@ public class CadastrarView extends JFrame implements ActionListener{
         jLabelName.setFont(new Font("Arial", Font.PLAIN, 14));
         
      
-        add(jLabelName);
+        getContentPane().add(jLabelName);
         
         textNome = new JTextField();
-        textNome.setBounds(115, 115, 550, 40);
+        textNome.setBounds(115, 115, 300, 40);
         textNome.setFont(new Font("Arial", Font.ITALIC, 15));
         
-        add(textNome);
+        getContentPane().add(textNome);
         
         jLabelEmail = new JLabel("Email:");
         jLabelEmail.setBounds(115, 155, 200, 50);
         jLabelEmail.setFont(new Font("Arial", Font.PLAIN, 14));  
      
-        add(jLabelEmail);
+        getContentPane().add(jLabelEmail);
         
         textEmail = new JTextField();
-        textEmail.setBounds(115, 195, 550, 40);
+        textEmail.setBounds(115, 195, 300, 40);
         textEmail.setFont(new Font("Arial", Font.ITALIC, 15));
         
-        add(textEmail);
+        getContentPane().add(textEmail);
 
          //validar o formato de email
          jLabelValidationLabel = new JLabel();
          jLabelValidationLabel.setBounds(335, 225, 550, 40);
          jLabelValidationLabel.setFont(new Font("Arial", Font.ITALIC, 15));
  
-         add(jLabelValidationLabel);
+         getContentPane().add(jLabelValidationLabel);
 
          textEmail.addKeyListener(new KeyListener(){
              public void keyReleased(KeyEvent e) {
@@ -133,20 +133,20 @@ public class CadastrarView extends JFrame implements ActionListener{
         jLabelSenha.setFont(new Font("Arial", Font.PLAIN, 14));
   
                  
-        add(jLabelSenha);
+        getContentPane().add(jLabelSenha);
         
         textSenha = new JPasswordField();
-        textSenha.setBounds(115, 275, 550, 40);
+        textSenha.setBounds(115, 275, 300, 40);
         textSenha.setFont(new Font("Arial", Font.ITALIC, 15));
                 
-        add(textSenha);
+        getContentPane().add(textSenha);
         
         //botao para mostrar senha 
         buttonShow = new JCheckBox("Mostrar Senha");
-        buttonShow.setBounds(540, 320, 250, 40);
+        buttonShow.setBounds(379, 322, 123, 40);
         buttonShow.setFont(new Font("Arial", Font.ITALIC, 15));
         
-        add(buttonShow);
+        getContentPane().add(buttonShow);
         
         buttonShow.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
@@ -158,14 +158,14 @@ public class CadastrarView extends JFrame implements ActionListener{
         });
         
         voltar = new RoundButton("Voltar");
-        voltar.setBounds(300, 335, 85, 30);
-        add(voltar);
+        voltar.setBounds(159, 334, 85, 30);
+        getContentPane().add(voltar);
         
         voltar.addActionListener(this);
 	    
         salvar = new RoundButton("Salvar");
-        salvar.setBounds(415, 335, 85, 30);
-        add(salvar);
+        salvar.setBounds(280, 334, 85, 30);
+        getContentPane().add(salvar);
         
         salvar.addActionListener(this);
         
@@ -247,7 +247,3 @@ public class CadastrarView extends JFrame implements ActionListener{
 	}
 
 }
-
-	
-
- 
