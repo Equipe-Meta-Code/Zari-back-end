@@ -47,7 +47,7 @@ public class UploadArquivo extends JFrame implements ActionListener{
        setIconImage(icon.getImage());
        Image resizedIcon = icon.getImage().getScaledInstance(32, 32, Image.SCALE_SMOOTH);
        ImageIcon finalIcon = new ImageIcon(resizedIcon);
-       etIconImage(finalIcon.getImage());
+       setIconImage(finalIcon.getImage());
 	    
        chatApp.setVisible(false);
 	    
