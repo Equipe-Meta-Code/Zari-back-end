@@ -2,7 +2,8 @@ package view;
 
 import model.Historico;
 
-
+import javax.swing.ImageIcon;
+import java.awt.Image;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
@@ -43,7 +44,12 @@ public class TabelaHistorico extends javax.swing.JFrame {
     }
 
     private void initComponents() {
-
+	 ImageIcon icon = new ImageIcon(getClass().getResource("zaribot.png"));
+         setIconImage(icon.getImage());
+         Image resizedIcon = icon.getImage().getScaledInstance(32, 32, Image.SCALE_SMOOTH);
+         ImageIcon finalIcon = new ImageIcon(resizedIcon);
+         setIconImage(finalIcon.getImage());
+	    
         jScrollPane1 = new javax.swing.JScrollPane();
         tabela = new javax.swing.JTable();
         jBVoltar = new RoundButton("Voltar");
