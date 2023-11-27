@@ -9,6 +9,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 
 public class TelaInicial extends JFrame implements ActionListener {
@@ -23,42 +24,44 @@ public class TelaInicial extends JFrame implements ActionListener {
     	
     	setTitle("Início");
         setBackground(Color.yellow);
-        setSize(800, 450);
+        setSize(550, 450);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(true);
         setLocationRelativeTo(null);
-        setLayout(null);
+        getContentPane().setLayout(null);
 
         
         ImageIcon imageIcon = new ImageIcon(getClass().getResource("zaribot.png"));
         JLabel imageLabel = new JLabel(imageIcon);
-        imageLabel.setBounds(270, 10, 260, 180); // Ajuste a posição e o tamanho conforme necessário
-        add(imageLabel);
+        imageLabel.setBounds(140, 11, 260, 180); // Ajuste a posição e o tamanho conforme necessário
+        getContentPane().add(imageLabel);
         
         title = new JLabel("Assistente Virtual Zari");
-        title.setFont(new Font("Arial", Font.BOLD, 30));
-        title.setBounds(240, 160, 400, 100);
-        add(title);
+        title.setFont(new Font("Yu Gothic", Font.BOLD, 30));
+        title.setBounds(103, 161, 328, 100);
+        getContentPane().add(title);
         
         textoEntrar = new JLabel("Já possui uma conta?");
-        textoEntrar.setFont(new Font("Arial", Font.BOLD, 15));
-        textoEntrar.setBounds(140, 270, 400, 20);
-        add(textoEntrar);
+        textoEntrar.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 15));
+        textoEntrar.setBounds(65, 272, 200, 20);
+        getContentPane().add(textoEntrar);
         
         buttonEntrar = new RoundButton("Entrar");
-        buttonEntrar.setBounds(165, 300, 100, 30); 
-        add(buttonEntrar);
+        buttonEntrar.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 15));
+        buttonEntrar.setBounds(90, 302, 100, 30); 
+        getContentPane().add(buttonEntrar);
         
         buttonEntrar.addActionListener(this);
         
         textoCadastrar = new JLabel("Ainda não tem uma Conta?");
-        textoCadastrar.setFont(new Font("Arial", Font.BOLD, 15));
-        textoCadastrar.setBounds(480, 270, 400, 20);
-        add(textoCadastrar);
+        textoCadastrar.setFont(new Font("Yu Gothic UI Semibold", Font.BOLD, 15));
+        textoCadastrar.setBounds(282, 272, 190, 20);
+        getContentPane().add(textoCadastrar);
 
         buttonCadastrar = new RoundButton("Cadastrar"); 
-        buttonCadastrar.setBounds(525, 300, 100, 30); // Ajuste de posicionamento e tamanho
-        add(buttonCadastrar);
+        buttonCadastrar.setFont(new Font("Yu Gothic UI Semilight", Font.PLAIN, 15));
+        buttonCadastrar.setBounds(326, 302, 100, 30); // Ajuste de posicionamento e tamanho
+        getContentPane().add(buttonCadastrar);
         
         buttonCadastrar.addActionListener(this);
 
